@@ -159,17 +159,14 @@ with st.sidebar:
     st.caption("Nikitha Build Tech Pvt Ltd")
     st.divider()
 
-    # DB Status
-    _demo = is_demo_mode()
-    if _demo:
+    # DB Status — attempt connection, then decide mode
+    if not is_demo_mode():
+        test_connection()  # This sets _force_demo if connection fails
+
+    if is_demo_mode():
         st.info("🎯 **Demo Mode** — Using sample data")
     else:
-        db_ok = test_connection()
-        if db_ok:
-            st.success("🟢 Database Connected")
-        else:
-            st.warning("⚠️ DB offline — switching to Demo Mode")
-            _demo = True
+        st.success("🟢 Database Connected")
 
     # Project Selector
     projects_df = get_all_projects()

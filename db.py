@@ -8,9 +8,15 @@ Gracefully falls back to demo mode when DB is unavailable.
 import streamlit as st
 import pandas as pd
 
+# Module-level flag: set to True when connection attempt fails
+_force_demo = False
+
 
 def is_demo_mode() -> bool:
-    """Check if the app should run in demo mode (no DB credentials or connection failed)."""
+    """Check if the app should run in demo mode (no credentials, or connection failed)."""
+    global _force_demo
+    if _force_demo:
+        return True
     try:
         cfg = st.secrets.get("postgres", None)
         if cfg is None or not cfg.get("host"):
@@ -18,6 +24,12 @@ def is_demo_mode() -> bool:
         return False
     except Exception:
         return True
+
+
+def _activate_demo_mode():
+    """Force demo mode on for the rest of this session."""
+    global _force_demo
+    _force_demo = True
 
 
 def _get_psycopg2():
@@ -38,6 +50,7 @@ def get_connection():
     """
     psycopg2 = _get_psycopg2()
     if psycopg2 is None:
+        _activate_demo_mode()
         return None
 
     try:
@@ -50,13 +63,12 @@ def get_connection():
             password=cfg["password"],
             sslmode="require",
             connect_timeout=15,
-            options="-c statement_timeout=30000",  # 30s timeout for safety
+            options="-c statement_timeout=30000",
         )
         conn.set_session(readonly=True, autocommit=True)
         return conn
     except Exception as e:
-        st.error(f"❌ Database connection failed: {e}")
-        st.info("💡 If running on Streamlit Cloud, ensure your AWS RDS instance has 'Publicly Accessible' set to **Yes** and the security group allows inbound connections on port 5432 from 0.0.0.0/0.")
+        _activate_demo_mode()
         return None
 
 
@@ -70,10 +82,8 @@ def run_query(sql: str, params: tuple = None) -> pd.DataFrame:
         return pd.DataFrame()
 
     try:
-        # Check if connection is still alive
         conn.isolation_level
     except Exception:
-        # Connection lost — clear cache and reconnect
         get_connection.clear()
         conn = get_connection()
         if conn is None:
@@ -86,8 +96,6 @@ def run_query(sql: str, params: tuple = None) -> pd.DataFrame:
             rows = cur.fetchall()
             return pd.DataFrame(rows) if rows else pd.DataFrame()
     except Exception as e:
-        st.error(f"❌ Query failed: {e}")
-        # Reset connection on error
         try:
             conn.rollback()
         except Exception:
