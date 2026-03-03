@@ -48,13 +48,20 @@ def get_connection():
     Returns a psycopg2 connection using credentials from Streamlit secrets.
     Connection is cached across reruns via @st.cache_resource.
     """
+    if _force_demo:
+        return None
+
     psycopg2 = _get_psycopg2()
     if psycopg2 is None:
         _activate_demo_mode()
         return None
 
     try:
-        cfg = st.secrets["postgres"]
+        cfg = st.secrets.get("postgres")
+        if not cfg:
+            _activate_demo_mode()
+            return None
+            
         conn = psycopg2.connect(
             host=cfg["host"],
             port=cfg["port"],
@@ -62,12 +69,12 @@ def get_connection():
             user=cfg["user"],
             password=cfg["password"],
             sslmode="require",
-            connect_timeout=15,
+            connect_timeout=10,
             options="-c statement_timeout=30000",
         )
         conn.set_session(readonly=True, autocommit=True)
         return conn
-    except Exception as e:
+    except Exception:
         _activate_demo_mode()
         return None
 
@@ -75,8 +82,12 @@ def get_connection():
 def run_query(sql: str, params: tuple = None) -> pd.DataFrame:
     """
     Execute a read-only SQL query and return results as a pandas DataFrame.
-    Automatically reconnects if the connection was lost.
     """
+    # If we are in demo mode, we should never reach this function 
+    # (queries.py intercepts it). But just in case:
+    if is_demo_mode():
+        return pd.DataFrame()
+
     conn = get_connection()
     if conn is None:
         return pd.DataFrame()
@@ -95,7 +106,7 @@ def run_query(sql: str, params: tuple = None) -> pd.DataFrame:
             cur.execute(sql, params)
             rows = cur.fetchall()
             return pd.DataFrame(rows) if rows else pd.DataFrame()
-    except Exception as e:
+    except Exception:
         try:
             conn.rollback()
         except Exception:
@@ -104,14 +115,19 @@ def run_query(sql: str, params: tuple = None) -> pd.DataFrame:
 
 
 def test_connection() -> bool:
-    """Quick health check — returns True if DB is reachable."""
+    """Quick health check — attempts connection once and falls back instantly if it fails."""
+    if is_demo_mode():
+        return False
+        
     conn = get_connection()
     if conn is None:
         return False
+        
     try:
         with conn.cursor() as cur:
             cur.execute("SELECT 1")
             return True
     except Exception:
+        _activate_demo_mode()
         get_connection.clear()
         return False
