@@ -24,12 +24,15 @@ def get_connection():
             dbname=cfg["dbname"],
             user=cfg["user"],
             password=cfg["password"],
+            sslmode="require",
+            connect_timeout=15,
             options="-c statement_timeout=30000",  # 30s timeout for safety
         )
         conn.set_session(readonly=True, autocommit=True)
         return conn
     except Exception as e:
         st.error(f"❌ Database connection failed: {e}")
+        st.info("💡 If running on Streamlit Cloud, ensure your AWS RDS instance has 'Publicly Accessible' set to **Yes** and the security group allows inbound connections on port 5432 from 0.0.0.0/0.")
         return None
 
 
