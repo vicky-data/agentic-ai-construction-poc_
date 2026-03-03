@@ -10,6 +10,17 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 
 
+def is_demo_mode() -> bool:
+    """Check if the app should run in demo mode (no DB credentials or connection failed)."""
+    try:
+        cfg = st.secrets.get("postgres", None)
+        if cfg is None or not cfg.get("host"):
+            return True
+        return False
+    except Exception:
+        return True
+
+
 @st.cache_resource
 def get_connection():
     """

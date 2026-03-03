@@ -15,7 +15,7 @@ import os
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from db import test_connection
+from db import test_connection, is_demo_mode
 from queries import (
     get_all_projects,
     get_project_by_id,
@@ -160,12 +160,16 @@ with st.sidebar:
     st.divider()
 
     # DB Status
-    db_ok = test_connection()
-    if db_ok:
-        st.success("🟢 Database Connected")
+    _demo = is_demo_mode()
+    if _demo:
+        st.info("🎯 **Demo Mode** — Using sample data")
     else:
-        st.error("🔴 Database Offline")
-        st.stop()
+        db_ok = test_connection()
+        if db_ok:
+            st.success("🟢 Database Connected")
+        else:
+            st.warning("⚠️ DB offline — switching to Demo Mode")
+            _demo = True
 
     # Project Selector
     projects_df = get_all_projects()

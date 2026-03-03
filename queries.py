@@ -1,9 +1,11 @@
 """
 SQL queries for the Agentic AI Construction POC.
 All queries are SELECT-only (read-only) against the Nikitha Build Tech database.
+Falls back to demo data when the database is unavailable.
 """
 
-from db import run_query
+from db import run_query, is_demo_mode
+import demo_data
 import pandas as pd
 import streamlit as st
 
@@ -14,6 +16,8 @@ import streamlit as st
 @st.cache_data(ttl=300)
 def get_all_projects() -> pd.DataFrame:
     """Fetch all projects with key details."""
+    if is_demo_mode():
+        return demo_data.get_demo_projects()
     sql = """
         SELECT
             id,
@@ -43,6 +47,8 @@ def get_all_projects() -> pd.DataFrame:
 @st.cache_data(ttl=300)
 def get_project_by_id(project_id: int) -> pd.DataFrame:
     """Fetch a single project by ID."""
+    if is_demo_mode():
+        return demo_data.get_demo_project_by_id(project_id)
     sql = """
         SELECT
             id,
@@ -74,6 +80,8 @@ def get_project_by_id(project_id: int) -> pd.DataFrame:
 @st.cache_data(ttl=120)
 def get_project_expenses(project_id: int) -> pd.DataFrame:
     """Daily expenses for a project, grouped by date and type."""
+    if is_demo_mode():
+        return demo_data.get_demo_expenses(project_id)
     sql = """
         SELECT
             reporting_date,
@@ -91,6 +99,8 @@ def get_project_expenses(project_id: int) -> pd.DataFrame:
 @st.cache_data(ttl=120)
 def get_total_expenses_by_project(project_id: int) -> float:
     """Total expenses for a project."""
+    if is_demo_mode():
+        return demo_data.get_demo_total_expenses(project_id)
     sql = """
         SELECT COALESCE(SUM(amount), 0) AS total_expense
         FROM expenes_daily_report
@@ -107,6 +117,8 @@ def get_total_expenses_by_project(project_id: int) -> float:
 @st.cache_data(ttl=120)
 def get_project_manpower(project_id: int) -> pd.DataFrame:
     """Daily manpower reports for a project."""
+    if is_demo_mode():
+        return demo_data.get_demo_manpower(project_id)
     sql = """
         SELECT
             reported_date,
@@ -128,6 +140,8 @@ def get_project_manpower(project_id: int) -> pd.DataFrame:
 @st.cache_data(ttl=120)
 def get_project_materials(project_id: int) -> pd.DataFrame:
     """Daily material usage for a project, joined with BOQ line details."""
+    if is_demo_mode():
+        return demo_data.get_demo_materials(project_id)
     sql = """
         SELECT
             m.daily_report_date,
@@ -152,6 +166,8 @@ def get_project_materials(project_id: int) -> pd.DataFrame:
 @st.cache_data(ttl=120)
 def get_project_machinery(project_id: int) -> pd.DataFrame:
     """Daily machinery usage for a project."""
+    if is_demo_mode():
+        return demo_data.get_demo_machinery(project_id)
     sql = """
         SELECT
             report_date,
@@ -175,6 +191,8 @@ def get_project_machinery(project_id: int) -> pd.DataFrame:
 @st.cache_data(ttl=300)
 def get_project_boq_scope(project_id: int) -> pd.DataFrame:
     """BOQ items scoped to a project."""
+    if is_demo_mode():
+        return demo_data.get_demo_boq_scope(project_id)
     sql = """
         SELECT
             pbs.id              AS scope_id,
@@ -201,6 +219,8 @@ def get_project_boq_scope(project_id: int) -> pd.DataFrame:
 @st.cache_data(ttl=120)
 def get_daily_report_approvals(project_id: int) -> pd.DataFrame:
     """Daily report approval status for a project."""
+    if is_demo_mode():
+        return demo_data.get_demo_approvals(project_id)
     sql = """
         SELECT
             dra.reported_date,
@@ -225,6 +245,8 @@ def get_daily_report_approvals(project_id: int) -> pd.DataFrame:
 @st.cache_data(ttl=120)
 def get_mrs_status(project_id: int) -> pd.DataFrame:
     """Material receipt slip approval statuses for a project."""
+    if is_demo_mode():
+        return demo_data.get_demo_mrs(project_id)
     sql = """
         SELECT
             mat.mrs_token_name,
@@ -249,6 +271,8 @@ def get_mrs_status(project_id: int) -> pd.DataFrame:
 @st.cache_data(ttl=300)
 def get_project_users(project_id: int) -> pd.DataFrame:
     """Users assigned to a project with their roles."""
+    if is_demo_mode():
+        return demo_data.get_demo_users(project_id)
     sql = """
         SELECT
             u.id                AS user_id,
