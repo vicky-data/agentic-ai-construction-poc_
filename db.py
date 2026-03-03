@@ -2,12 +2,11 @@
 Database connection layer for the Agentic AI Construction POC.
 Connects to the Nikitha Build Tech PostgreSQL database on AWS RDS.
 All queries are READ-ONLY.
+Gracefully falls back to demo mode when DB is unavailable.
 """
 
 import streamlit as st
 import pandas as pd
-import psycopg2
-from psycopg2.extras import RealDictCursor
 
 
 def is_demo_mode() -> bool:
@@ -21,12 +20,26 @@ def is_demo_mode() -> bool:
         return True
 
 
+def _get_psycopg2():
+    """Lazily import psycopg2 to avoid ImportError when not installed or not needed."""
+    try:
+        import psycopg2
+        import psycopg2.extras
+        return psycopg2
+    except ImportError:
+        return None
+
+
 @st.cache_resource
 def get_connection():
     """
     Returns a psycopg2 connection using credentials from Streamlit secrets.
     Connection is cached across reruns via @st.cache_resource.
     """
+    psycopg2 = _get_psycopg2()
+    if psycopg2 is None:
+        return None
+
     try:
         cfg = st.secrets["postgres"]
         conn = psycopg2.connect(
@@ -67,6 +80,7 @@ def run_query(sql: str, params: tuple = None) -> pd.DataFrame:
             return pd.DataFrame()
 
     try:
+        from psycopg2.extras import RealDictCursor
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute(sql, params)
             rows = cur.fetchall()
