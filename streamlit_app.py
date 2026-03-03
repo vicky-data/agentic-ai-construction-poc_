@@ -59,88 +59,98 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-    /* Main theme */
+    /* Main theme: Ultra dark graphite background */
     .stApp {
-        background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 50%, #0d1230 100%);
+        background: #0f1115;
     }
 
-    /* KPI Cards */
+    /* KPI Cards: Frosted Glass */
     .kpi-card {
-        background: linear-gradient(135deg, rgba(30, 136, 229, 0.15), rgba(30, 136, 229, 0.05));
-        border: 1px solid rgba(30, 136, 229, 0.3);
-        border-radius: 16px;
-        padding: 20px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 24px 20px;
         text-align: center;
-        backdrop-filter: blur(10px);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        backdrop-filter: blur(12px);
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
     .kpi-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(30, 136, 229, 0.2);
+        transform: translateY(-2px);
+        border-color: rgba(212, 175, 55, 0.4); /* Champagne Gold border on hover */
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
     }
     .kpi-value {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #64B5F6;
+        font-size: 2.2rem;
+        font-weight: 300;
+        color: #f8f9fa; /* Off-white for pure contrast */
         margin: 0;
+        line-height: 1.1;
     }
     .kpi-label {
-        font-size: 0.85rem;
-        color: #90A4AE;
+        font-size: 0.75rem;
+        color: #8c9097;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-top: 5px;
+        letter-spacing: 1.5px;
+        margin-top: 10px;
+        font-weight: 500;
     }
 
-    /* Risk Badge */
+    /* Risk Badge: Modernized, boxier, muted colors */
     .risk-badge {
         display: inline-block;
-        padding: 8px 24px;
-        border-radius: 25px;
-        font-weight: 700;
-        font-size: 1.1rem;
-        letter-spacing: 1px;
-    }
-    .risk-low { background: rgba(0, 230, 118, 0.2); color: #00E676; border: 1px solid #00E676; }
-    .risk-medium { background: rgba(255, 214, 0, 0.2); color: #FFD600; border: 1px solid #FFD600; }
-    .risk-high { background: rgba(255, 109, 0, 0.2); color: #FF6D00; border: 1px solid #FF6D00; }
-    .risk-critical { background: rgba(255, 23, 68, 0.2); color: #FF1744; border: 1px solid #FF1744; }
-
-    /* Section headers */
-    .section-header {
-        font-size: 1.3rem;
+        padding: 6px 18px;
+        border-radius: 6px;
         font-weight: 600;
-        color: #E3F2FD;
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 2px solid rgba(30, 136, 229, 0.3);
+        font-size: 1rem;
+        letter-spacing: 1.2px;
+        margin-bottom: 15px;
+    }
+    .risk-low { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .risk-medium { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .risk-high { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .risk-critical { background: rgba(153, 27, 27, 0.2); color: #fca5a5; border: 1px solid rgba(220, 38, 38, 0.5); }
+
+    /* Section headers: Clean, subtle underline */
+    .section-header {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #e5e7eb;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        letter-spacing: 0.5px;
     }
 
-    /* Alert rows */
+    /* Alert rows: Refined structural blocks */
     .alert-row {
-        background: rgba(255, 255, 255, 0.04);
-        border-radius: 8px;
-        padding: 8px 12px;
-        margin-bottom: 4px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        padding: 10px 14px;
+        margin-bottom: 6px;
         font-size: 0.85rem;
-        border-left: 3px solid #1E88E5;
+        border-left: 2px solid #6b7280; /* Neutral grey marker */
+        color: #d1d5db;
     }
 
-    /* Recommendation cards */
+    /* Recommendation cards: Elegant Amber accents */
     .rec-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
-        padding: 15px;
-        margin-bottom: 10px;
-        border-left: 4px solid #FF6D00;
+        background: rgba(255, 255, 255, 0.015);
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-left: 3px solid rgba(212, 175, 55, 0.7); /* Signature Gold marker */
     }
 
-    /* Chat */
+    /* Chat: Glass input feeling */
     .chat-answer {
-        background: rgba(30, 136, 229, 0.1);
-        border-radius: 12px;
-        padding: 15px;
-        border: 1px solid rgba(30, 136, 229, 0.2);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        padding: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #e5e7eb;
+        line-height: 1.6;
     }
 
     /* Hide Streamlit branding */
