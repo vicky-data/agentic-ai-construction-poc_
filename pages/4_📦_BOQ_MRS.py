@@ -28,9 +28,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 projects_df = get_all_projects()
-sel_proj = st.selectbox("🏗️ Select Project", options=[
-    f"{p.get('project_name', f'#{p[\"id\"]}')} (#{p['id']})" for _, p in projects_df.iterrows()
-])
+proj_options = []
+for _, p in projects_df.iterrows():
+    pname = p.get("project_name", "Project #" + str(p["id"]))
+    proj_options.append(pname + " (#" + str(p["id"]) + ")")
+sel_proj = st.selectbox("🏗️ Select Project", options=proj_options)
 sel_proj_id = projects_df.iloc[0]["id"] if not projects_df.empty else 1
 
 tab_boq, tab_mrs_create, tab_mrs_status, tab_material_compare = st.tabs([

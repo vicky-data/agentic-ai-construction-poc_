@@ -48,9 +48,11 @@ with tab_submit:
     my_projects = [p for p in user.get("projects", []) if p in projects_df["id"].values]
     my_proj_df = projects_df[projects_df["id"].isin(my_projects)] if my_projects else projects_df
 
-    sel_proj = st.selectbox("🏗️ Select Project", options=[
-        f"{p.get('project_name', f'#{p[\"id\"]}')} (#{p['id']})" for _, p in my_proj_df.iterrows()
-    ])
+    proj_options = []
+    for _, p in my_proj_df.iterrows():
+        pname = p.get("project_name", "Project #" + str(p["id"]))
+        proj_options.append(pname + " (#" + str(p["id"]) + ")")
+    sel_proj = st.selectbox("🏗️ Select Project", options=proj_options)
     sel_proj_id = my_proj_df.iloc[0]["id"] if not my_proj_df.empty else 1
 
     col_dt, col_timing = st.columns(2)

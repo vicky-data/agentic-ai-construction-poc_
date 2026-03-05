@@ -199,5 +199,5 @@ if st.button("📄 Download Organization Report (PDF)", use_container_width=True
 
 # Footer
 st.markdown("""<div style="text-align:center; padding:20px 0; color:#4b5563; font-size:0.8rem;">
-    🏗️ Agentic AI Construction POC — Director View
+    🏗️ ConstructIQ — Director View
 </div>""", unsafe_allow_html=True)

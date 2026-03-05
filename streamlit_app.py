@@ -1,5 +1,5 @@
 """
-🏗️ Agentic AI Construction POC — Login & Home Page
+🏗️ ConstructIQ — Login & Home Page
 Role-based access: Admin, Director, Project Manager, Project Engineer
 """
 
@@ -20,7 +20,7 @@ from auth import (
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 st.set_page_config(
-    page_title="Agentic AI — Construction POC",
+    page_title="ConstructIQ — Construction Intelligence",
     page_icon="🏗️",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -157,7 +157,7 @@ if is_authenticated():
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 with st.sidebar:
-    st.markdown("## 🏗️ Agentic AI POC")
+    st.markdown("## 🏗️ ConstructIQ")
     st.caption("Nikitha Build Tech Pvt Ltd")
     st.divider()
 
@@ -204,7 +204,7 @@ if not is_authenticated():
     st.markdown("""
         <div style="text-align:center; padding: 30px 0 10px 0;">
             <h1 style="color: #f8f9fa; font-weight: 300; font-size: 2.5rem;">
-                🏗️ Agentic AI Construction
+                🏗️ ConstructIQ
             </h1>
             <p style="color: #8c9097; font-size: 1rem; letter-spacing: 1px;">
                 NIKITHA BUILD TECH PVT LTD
@@ -258,7 +258,7 @@ else:
                 Welcome, {user['full_name']}
             </h1>
             <p style="color: #8c9097; letter-spacing: 1.5px; text-transform: uppercase;">
-                {role} • Agentic AI Construction POC
+                {role} • ConstructIQ
             </p>
         </div>
     """, unsafe_allow_html=True)
@@ -361,7 +361,7 @@ else:
     # Footer
     st.markdown("""
         <div style="text-align:center; padding:30px 0; color:#4b5563; font-size:0.8rem;">
-            🏗️ Agentic AI Construction POC — Nikitha Build Tech Pvt Ltd<br>
+            🏗️ ConstructIQ — Nikitha Build Tech Pvt Ltd<br>
             Powered by AI Agents | Built with Streamlit
         </div>
     """, unsafe_allow_html=True)

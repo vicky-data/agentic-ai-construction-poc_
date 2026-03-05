@@ -163,9 +163,11 @@ with tab_approvals:
 with tab_absent:
     st.markdown('<p style="font-size:1.1rem; color:#e5e7eb;">Submit Daily Report on Behalf of Absent PE</p>', unsafe_allow_html=True)
 
-    sel_project = st.selectbox("Select Project", options=[
-        f"{p.get('project_name', f'#{p[\"id\"]}')} (#{p['id']})" for _, p in pm_projects.iterrows()
-    ])
+    proj_options = []
+    for _, p in pm_projects.iterrows():
+        pname = p.get("project_name", "Project #" + str(p["id"]))
+        proj_options.append(pname + " (#" + str(p["id"]) + ")")
+    sel_project = st.selectbox("Select Project", options=proj_options)
     absent_pe = st.text_input("Absent PE Name", placeholder="e.g. Rajesh Kumar")
     timing = st.selectbox("Report Timing", ["MORNING", "AFTERNOON", "EVENING"])
 

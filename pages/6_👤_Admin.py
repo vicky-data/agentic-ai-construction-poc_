@@ -155,9 +155,10 @@ with tab_labour:
     }
 
     projects_df = get_all_projects()
-    sel_proj = st.selectbox("Select Project", options=[
-        p.get("project_name", f"#{p['id']}") for _, p in projects_df.iterrows()
-    ], key="labour_proj")
+    proj_names = []
+    for _, p in projects_df.iterrows():
+        proj_names.append(p.get("project_name", "Project #" + str(p["id"])))
+    sel_proj = st.selectbox("Select Project", options=proj_names, key="labour_proj")
 
     for group, categories in default_categories.items():
         with st.expander(f"📂 {group}", expanded=True):
