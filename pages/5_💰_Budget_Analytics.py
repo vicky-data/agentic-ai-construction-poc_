@@ -39,8 +39,12 @@ if projects_df.empty:
     st.stop()
 
 # Sidebar project selector & date range
-sel_idx = st.selectbox("🏗️ Select Project", range(len(projects_df)),
-    format_func=lambda i: f"{projects_df.iloc[i].get('project_name', f'#{projects_df.iloc[i][\"id\"]}')} (#{projects_df.iloc[i]['id']})")
+def _fmt_proj(i):
+    row = projects_df.iloc[i]
+    pname = row.get("project_name", "Project #" + str(row["id"]))
+    return pname + " (#" + str(row["id"]) + ")"
+
+sel_idx = st.selectbox("🏗️ Select Project", range(len(projects_df)), format_func=_fmt_proj)
 project = projects_df.iloc[sel_idx]
 pid = project["id"]
 
