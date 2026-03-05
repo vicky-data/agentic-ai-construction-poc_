@@ -45,15 +45,27 @@ tab_submit, tab_history = st.tabs(["📝 Submit Report", "📋 Report History"])
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 with tab_submit:
     projects_df = get_all_projects()
-    my_projects = [p for p in user.get("projects", []) if p in projects_df["id"].values]
-    my_proj_df = projects_df[projects_df["id"].isin(my_projects)] if my_projects else projects_df
+
+    # Defensive: find the ID column name
+    id_col = "id" if "id" in projects_df.columns else projects_df.columns[0] if not projects_df.empty else "id"
+
+    my_project_ids = user.get("projects", [])
+    if id_col in projects_df.columns:
+        my_projects = [p for p in my_project_ids if p in projects_df[id_col].values]
+        my_proj_df = projects_df[projects_df[id_col].isin(my_projects)] if my_projects else projects_df
+    else:
+        my_proj_df = projects_df
 
     proj_options = []
     for _, p in my_proj_df.iterrows():
-        pname = p.get("project_name", "Project #" + str(p["id"]))
-        proj_options.append(pname + " (#" + str(p["id"]) + ")")
+        pid = p.get(id_col, p.name) if id_col in p.index else p.name
+        pname = p.get("project_name", "Project #" + str(pid))
+        proj_options.append(pname + " (#" + str(pid) + ")")
     sel_proj = st.selectbox("🏗️ Select Project", options=proj_options)
-    sel_proj_id = my_proj_df.iloc[0]["id"] if not my_proj_df.empty else 1
+    if not my_proj_df.empty and id_col in my_proj_df.columns:
+        sel_proj_id = my_proj_df.iloc[0][id_col]
+    else:
+        sel_proj_id = 1
 
     col_dt, col_timing = st.columns(2)
     with col_dt:

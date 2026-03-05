@@ -71,7 +71,7 @@ with tab_users:
                                 help="Hierarchy: Director → Project Manager → Project Engineer")
         new_password = st.text_input("Password", type="password", value="user123")
         projects_df = get_all_projects()
-        proj_ids = projects_df["id"].tolist() if not projects_df.empty else [1, 2, 3]
+        proj_ids = projects_df["id"].tolist() if (not projects_df.empty and "id" in projects_df.columns) else [1, 2, 3]
         new_projects = st.multiselect("Assign Projects", proj_ids)
 
     if st.button("➕ Create User", use_container_width=True, type="primary"):

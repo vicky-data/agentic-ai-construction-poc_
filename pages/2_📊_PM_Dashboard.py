@@ -41,8 +41,13 @@ if projects_df.empty:
     st.stop()
 
 # Filter to PM's assigned projects
-my_projects = [p for p in user.get("projects", []) if p in projects_df["id"].values]
-pm_projects = projects_df[projects_df["id"].isin(my_projects)]
+id_col = "id" if "id" in projects_df.columns else projects_df.columns[0] if not projects_df.empty else "id"
+if id_col in projects_df.columns:
+    my_projects = [p for p in user.get("projects", []) if p in projects_df[id_col].values]
+    pm_projects = projects_df[projects_df[id_col].isin(my_projects)]
+else:
+    my_projects = user.get("projects", [])
+    pm_projects = projects_df
 
 if pm_projects.empty:
     pm_projects = projects_df  # Admin sees all
