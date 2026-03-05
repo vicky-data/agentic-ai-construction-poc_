@@ -13,7 +13,7 @@ import streamlit as st
 # PROJECTS
 # ──────────────────────────────────────────────
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=1)
 def get_all_projects() -> pd.DataFrame:
     """Fetch all projects with key details."""
     if not is_demo_mode():
@@ -47,7 +47,7 @@ def get_all_projects() -> pd.DataFrame:
     return demo_data.get_demo_projects()
 
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=1)
 def get_project_by_id(project_id: int) -> pd.DataFrame:
     """Fetch a single project by ID."""
     if not is_demo_mode():
@@ -82,7 +82,7 @@ def get_project_by_id(project_id: int) -> pd.DataFrame:
 # EXPENSES
 # ──────────────────────────────────────────────
 
-@st.cache_data(ttl=120)
+@st.cache_data(ttl=1)
 def get_project_expenses(project_id: int) -> pd.DataFrame:
     """Daily expenses for a project, grouped by date and type."""
     if not is_demo_mode():
@@ -103,7 +103,7 @@ def get_project_expenses(project_id: int) -> pd.DataFrame:
     return demo_data.get_demo_expenses(project_id)
 
 
-@st.cache_data(ttl=120)
+@st.cache_data(ttl=1)
 def get_total_expenses_by_project(project_id: int) -> float:
     """Total expenses for a project."""
     if not is_demo_mode():
@@ -122,7 +122,7 @@ def get_total_expenses_by_project(project_id: int) -> float:
 # MANPOWER
 # ──────────────────────────────────────────────
 
-@st.cache_data(ttl=120)
+@st.cache_data(ttl=1)
 def get_project_manpower(project_id: int) -> pd.DataFrame:
     """Daily manpower reports for a project."""
     if not is_demo_mode():
@@ -147,7 +147,7 @@ def get_project_manpower(project_id: int) -> pd.DataFrame:
 # MATERIAL USAGE
 # ──────────────────────────────────────────────
 
-@st.cache_data(ttl=120)
+@st.cache_data(ttl=1)
 def get_project_materials(project_id: int) -> pd.DataFrame:
     """Daily material usage for a project, joined with BOQ line details."""
     if not is_demo_mode():
@@ -175,7 +175,7 @@ def get_project_materials(project_id: int) -> pd.DataFrame:
 # MACHINERY
 # ──────────────────────────────────────────────
 
-@st.cache_data(ttl=120)
+@st.cache_data(ttl=1)
 def get_project_machinery(project_id: int) -> pd.DataFrame:
     """Daily machinery usage for a project."""
     if not is_demo_mode():
@@ -202,7 +202,7 @@ def get_project_machinery(project_id: int) -> pd.DataFrame:
 # BOQ (Bill of Quantities)
 # ──────────────────────────────────────────────
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=1)
 def get_project_boq_scope(project_id: int) -> pd.DataFrame:
     """BOQ items scoped to a project."""
     if not is_demo_mode():
@@ -232,7 +232,7 @@ def get_project_boq_scope(project_id: int) -> pd.DataFrame:
 # DAILY REPORT APPROVALS
 # ──────────────────────────────────────────────
 
-@st.cache_data(ttl=120)
+@st.cache_data(ttl=1)
 def get_daily_report_approvals(project_id: int) -> pd.DataFrame:
     """Daily report approval status for a project."""
     if not is_demo_mode():
@@ -260,7 +260,7 @@ def get_daily_report_approvals(project_id: int) -> pd.DataFrame:
 # MRS (Material Receipt Slips)
 # ──────────────────────────────────────────────
 
-@st.cache_data(ttl=120)
+@st.cache_data(ttl=1)
 def get_mrs_status(project_id: int) -> pd.DataFrame:
     """Material receipt slip approval statuses for a project."""
     if not is_demo_mode():
@@ -288,7 +288,7 @@ def get_mrs_status(project_id: int) -> pd.DataFrame:
 # USERS & ROLES
 # ──────────────────────────────────────────────
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=1)
 def get_project_users(project_id: int) -> pd.DataFrame:
     """Users assigned to a project with their roles."""
     if not is_demo_mode():
