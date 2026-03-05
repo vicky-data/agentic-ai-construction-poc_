@@ -1,384 +1,237 @@
 """
-Demo Data Module — Provides realistic sample data for management demos.
-Used when the PostgreSQL database is unavailable (e.g., Streamlit Cloud without RDS access).
-All data mimics real Nikitha Build Tech project structures.
+Data Module — Replaces fake demo data with the REAL client PostgreSQL snapshot data.
+Reads parsed CSV files securely to act as a "streaming" local flat-file database suitable for Streamlit Cloud.
 """
 
 import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta, date
+import os
 
+CSV_DIR = os.path.join(os.path.dirname(__file__), "sql_data", "parsed_csvs")
 
-def _today():
-    return datetime.now().date()
+# Helper to load CSV cleanly
+def _load_csv(table_name):
+    path = os.path.join(CSV_DIR, f"{table_name}.csv")
+    if os.path.exists(path):
+        return pd.read_csv(path)
+    return pd.DataFrame()
 
+# Cached DataFrames
+_projects_df = _load_csv("project")
+_expenses_df = _load_csv("expenes_daily_report")
+_manpower_df = _load_csv("manpower_daily_report")
+_materials_df = _load_csv("material_uses_daily_report")
+_machinery_df = _load_csv("daily_machinery_usage")
+_boq_scope_df = _load_csv("project_boq_scope")
+_boq_lines_df = _load_csv("boq_lines")
+_boq_header_df = _load_csv("boq_header")
+_approvals_df = _load_csv("daily_report_approval")
+_mrs_approval_df = _load_csv("mrs_approval_table")
+_mrs_details_df = _load_csv("mrs_details")
+_users_df = _load_csv("users")
+_pum_df = _load_csv("project_user_mapping")
+_role_df = _load_csv("role")
 
 # ──────────────────────────────────────────────
 # PROJECTS
 # ──────────────────────────────────────────────
-
 def get_demo_projects() -> pd.DataFrame:
-    today = _today()
-    return pd.DataFrame([
-        {
-            "id": 1,
-            "project_name": "Gachibowli Sky Tower — 14 Floors",
-            "project_code": "NBT-GT-2025",
-            "project_description": "14-floor residential tower with basement parking and rooftop amenities",
-            "location": "Gachibowli, Hyderabad",
-            "planned_start_date": today - timedelta(days=180),
-            "actual_start_date": today - timedelta(days=175),
-            "planned_end_date": today + timedelta(days=120),
-            "actual_end_date": None,
-            "execution_start_date": today - timedelta(days=170),
-            "execution_end_date": None,
-            "total_price": 85000000.0,
-            "man_power": 120,
-            "status": "IN_PROGRESS",
-            "remark": "Structural work on schedule. Interior fit-out phase starting.",
-            "manager_remark": "Good progress. Monitor material costs closely.",
-            "created_date": today - timedelta(days=200),
-            "modified_date": today - timedelta(days=1),
-        },
-        {
-            "id": 2,
-            "project_name": "Jubilee Hills Premium Villa",
-            "project_code": "NBT-JH-2025",
-            "project_description": "Luxury 4BHK independent villa with landscaping and swimming pool",
-            "location": "Jubilee Hills, Hyderabad",
-            "planned_start_date": today - timedelta(days=90),
-            "actual_start_date": today - timedelta(days=85),
-            "planned_end_date": today + timedelta(days=45),
-            "actual_end_date": None,
-            "execution_start_date": today - timedelta(days=82),
-            "execution_end_date": None,
-            "total_price": 25000000.0,
-            "man_power": 35,
-            "status": "IN_PROGRESS",
-            "remark": "Foundation and ground floor complete. First floor slab poured.",
-            "manager_remark": "Slight delay in plumbing material delivery.",
-            "created_date": today - timedelta(days=100),
-            "modified_date": today - timedelta(days=2),
-        },
-        {
-            "id": 3,
-            "project_name": "Hitech City Commercial Complex",
-            "project_code": "NBT-HC-2024",
-            "project_description": "G+5 commercial office complex with co-working spaces",
-            "location": "Hitech City, Hyderabad",
-            "planned_start_date": today - timedelta(days=300),
-            "actual_start_date": today - timedelta(days=295),
-            "planned_end_date": today - timedelta(days=10),
-            "actual_end_date": None,
-            "execution_start_date": today - timedelta(days=290),
-            "execution_end_date": None,
-            "total_price": 120000000.0,
-            "man_power": 200,
-            "status": "IN_PROGRESS",
-            "remark": "Interior and MEP work in final stages. Punch list items pending.",
-            "manager_remark": "Project overdue by 10 days. Need to expedite finishing work.",
-            "created_date": today - timedelta(days=320),
-            "modified_date": today - timedelta(days=1),
-        },
-    ])
-
+    df = _projects_df.copy()
+    if df.empty: return df
+    df = df.rename(columns={
+        "name": "project_name",
+        "loc": "location",
+        "mnager_remark": "manager_remark"
+    })
+    # Force correct data types
+    df["id"] = pd.to_numeric(df["id"], errors="coerce")
+    df = df.sort_values(by="id", ascending=False).reset_index(drop=True)
+    return df
 
 def get_demo_project_by_id(project_id: int) -> pd.DataFrame:
     df = get_demo_projects()
+    if df.empty: return df
     return df[df["id"] == project_id].reset_index(drop=True)
-
 
 # ──────────────────────────────────────────────
 # EXPENSES
 # ──────────────────────────────────────────────
-
 def get_demo_expenses(project_id: int) -> pd.DataFrame:
-    np.random.seed(project_id * 42)
-    today = _today()
-
-    budgets = {1: 85000000, 2: 25000000, 3: 120000000}
-    budget = budgets.get(project_id, 50000000)
-    days = {1: 170, 2: 82, 3: 290}
-    num_days = days.get(project_id, 90)
-
-    categories = [
-        ("Labour", "Skilled Workers"),
-        ("Labour", "Unskilled Workers"),
-        ("Material", "Cement"),
-        ("Material", "Steel"),
-        ("Material", "Sand & Aggregate"),
-        ("Equipment", "Crane Rental"),
-        ("Equipment", "Excavator"),
-        ("Overhead", "Site Office"),
-        ("Overhead", "Safety Equipment"),
-    ]
-
-    rows = []
-    for day_offset in range(num_days):
-        report_date = today - timedelta(days=num_days - day_offset)
-        # Generate 2-4 expense entries per day
-        n_entries = np.random.randint(2, 5)
-        for _ in range(n_entries):
-            cat = categories[np.random.randint(0, len(categories))]
-            # Scale amounts based on project budget
-            base = budget / (num_days * 3)
-            amount = round(base * np.random.uniform(0.3, 2.2), 2)
-            rows.append({
-                "reporting_date": report_date,
-                "parent_type": cat[0],
-                "child_type": cat[1],
-                "amount": amount,
-                "report_timing": np.random.choice(["MORNING", "EVENING"]),
-            })
-
-    return pd.DataFrame(rows)
-
+    df = _expenses_df.copy()
+    if df.empty: return df
+    df["project_id"] = pd.to_numeric(df["project_id"], errors="coerce")
+    df = df[df["project_id"] == project_id]
+    df["amount"] = pd.to_numeric(df["amount"], errors="coerce").fillna(0.0)
+    # Return specific columns
+    cols = ["reporting_date", "parent_type", "child_type", "amount", "report_timing"]
+    available_cols = [c for c in cols if c in df.columns]
+    return df[available_cols].copy()
 
 def get_demo_total_expenses(project_id: int) -> float:
     df = get_demo_expenses(project_id)
-    return float(df["amount"].sum()) if not df.empty else 0.0
-
+    if df.empty or "amount" not in df.columns: return 0.0
+    return float(df["amount"].sum())
 
 # ──────────────────────────────────────────────
 # MANPOWER
 # ──────────────────────────────────────────────
-
 def get_demo_manpower(project_id: int) -> pd.DataFrame:
-    np.random.seed(project_id * 17)
-    today = _today()
-
-    base_counts = {1: {"Skilled": 45, "Unskilled": 60, "Supervisor": 8, "Helper": 15},
-                   2: {"Skilled": 12, "Unskilled": 18, "Supervisor": 3, "Helper": 5},
-                   3: {"Skilled": 70, "Unskilled": 100, "Supervisor": 15, "Helper": 25}}
-    counts = base_counts.get(project_id, {"Skilled": 20, "Unskilled": 30, "Supervisor": 5, "Helper": 8})
-
-    days = {1: 170, 2: 82, 3: 290}
-    num_days = days.get(project_id, 90)
-
-    rows = []
-    for day_offset in range(num_days):
-        report_date = today - timedelta(days=num_days - day_offset)
-        for mp_type, base_count in counts.items():
-            # Add natural variation, with a slight dip in recent days for project 3
-            variation = np.random.uniform(0.7, 1.3)
-            if project_id == 3 and day_offset > num_days - 14:
-                variation *= 0.6  # Simulating manpower drop
-            count = max(1, int(base_count * variation))
-            rows.append({
-                "reported_date": report_date,
-                "man_power_type": mp_type,
-                "man_count": count,
-                "reporting_time": np.random.choice(["MORNING", "EVENING"]),
-                "remark": "",
-            })
-
-    return pd.DataFrame(rows)
-
+    df = _manpower_df.copy()
+    if df.empty: return df
+    df["project_id"] = pd.to_numeric(df["project_id"], errors="coerce")
+    df = df[df["project_id"] == project_id]
+    cols = ["reported_date", "man_power_type", "man_count", "reporting_time", "remark"]
+    available_cols = [c for c in cols if c in df.columns]
+    return df[available_cols].copy()
 
 # ──────────────────────────────────────────────
-# MATERIALS
+# MATERIAL USAGE
 # ──────────────────────────────────────────────
-
 def get_demo_materials(project_id: int) -> pd.DataFrame:
-    np.random.seed(project_id * 31)
-    today = _today()
-
-    materials = [
-        {"line_item_name": "OPC Cement 53 Grade", "unit_of_measurement": "Bags", "scope_quantity": 5000},
-        {"line_item_name": "TMT Steel 12mm", "unit_of_measurement": "Tonnes", "scope_quantity": 120},
-        {"line_item_name": "River Sand (Fine)", "unit_of_measurement": "Cu.M", "scope_quantity": 800},
-        {"line_item_name": "M20 Ready Mix Concrete", "unit_of_measurement": "Cu.M", "scope_quantity": 1200},
-        {"line_item_name": "Red Bricks (Standard)", "unit_of_measurement": "Nos", "scope_quantity": 50000},
-        {"line_item_name": "CPVC Pipes 1 inch", "unit_of_measurement": "Metres", "scope_quantity": 2000},
-    ]
-
-    days = {1: 170, 2: 82, 3: 290}
-    num_days = days.get(project_id, 90)
-
-    rows = []
-    for day_offset in range(0, num_days, 3):  # Materials recorded every 3 days
-        report_date = today - timedelta(days=num_days - day_offset)
-        mat = materials[np.random.randint(0, len(materials))]
-        used = round(mat["scope_quantity"] / (num_days / 3) * np.random.uniform(0.5, 1.8), 1)
-        rows.append({
-            "daily_report_date": report_date,
-            "used_material": used,
-            "daily_report_timing": np.random.choice(["MORNING", "EVENING"]),
-            "line_item_name": mat["line_item_name"],
-            "unit_of_measurement": mat["unit_of_measurement"],
-            "scope_quantity": mat["scope_quantity"],
-        })
-
-    return pd.DataFrame(rows)
-
+    m = _materials_df.copy()
+    if m.empty: return pd.DataFrame()
+    
+    m["project_id"] = pd.to_numeric(m["project_id"], errors="coerce")
+    m = m[m["project_id"] == project_id]
+    
+    pbs = _boq_scope_df.copy()
+    bl = _boq_lines_df.copy()
+    
+    if not pbs.empty:
+        pbs["id"] = pd.to_numeric(pbs["id"], errors="coerce")
+        m["project_boq_scope_id"] = pd.to_numeric(m["project_boq_scope_id"], errors="coerce")
+        m = m.merge(pbs, left_on="project_boq_scope_id", right_on="id", how="left", suffixes=("", "_pbs"))
+    else:
+        m["scope_quantity"] = 0
+        
+    if not bl.empty:
+        bl["id"] = pd.to_numeric(bl["id"], errors="coerce")
+        m["line_id"] = pd.to_numeric(m["line_id"], errors="coerce")
+        m = m.merge(bl, left_on="line_id", right_on="id", how="left", suffixes=("", "_bl"))
+    else:
+        m["line_item_name"] = "Unknown"
+        m["unit_of_measurement"] = "-"
+        
+    cols = ["daily_report_date", "used_material", "daily_report_timing", "line_item_name", "unit_of_measurement", "scope_quantity"]
+    available = [c for c in cols if c in m.columns]
+    return m[available].copy()
 
 # ──────────────────────────────────────────────
 # MACHINERY
 # ──────────────────────────────────────────────
-
 def get_demo_machinery(project_id: int) -> pd.DataFrame:
-    np.random.seed(project_id * 53)
-    today = _today()
-
-    machinery_types = [
-        ("Excavator", "JCB 3DX"),
-        ("Excavator", "Hitachi ZX130"),
-        ("Crane", "Mobile Crane 20T"),
-        ("Crane", "Tower Crane"),
-        ("Mixer", "Concrete Mixer 10/7"),
-        ("Truck", "Tipper 16T"),
-        ("Truck", "Transit Mixer"),
-        ("Compactor", "Vibratory Roller"),
-    ]
-
-    days = {1: 170, 2: 82, 3: 290}
-    num_days = days.get(project_id, 90)
-
-    rows = []
-    for day_offset in range(0, num_days, 2):  # Machinery every 2 days
-        report_date = today - timedelta(days=num_days - day_offset)
-        n_machines = np.random.randint(1, 4)
-        for _ in range(n_machines):
-            mach = machinery_types[np.random.randint(0, len(machinery_types))]
-            start_hour = np.random.randint(6, 10)
-            duration = np.random.randint(4, 10)
-            rows.append({
-                "report_date": report_date,
-                "parent_type": mach[0],
-                "child_type": mach[1],
-                "start_time": f"{start_hour:02d}:00",
-                "end_time": f"{start_hour + duration:02d}:00",
-                "submit_timing": "MORNING",
-                "remark": "",
-            })
-
-    return pd.DataFrame(rows)
-
+    df = _machinery_df.copy()
+    if df.empty: return df
+    df["project_id"] = pd.to_numeric(df["project_id"], errors="coerce")
+    df = df[df["project_id"] == project_id]
+    cols = ["report_date", "parent_type", "child_type", "start_time", "end_time", "submit_timing", "remark"]
+    available = [c for c in cols if c in df.columns]
+    return df[available].copy()
 
 # ──────────────────────────────────────────────
-# BOQ SCOPE
+# BOQ (Bill of Quantities)
 # ──────────────────────────────────────────────
-
 def get_demo_boq_scope(project_id: int) -> pd.DataFrame:
-    return pd.DataFrame([
-        {"scope_id": 1, "parent_item_code": "CIV-01", "parent_item_name": "Civil Works",
-         "line_item_code": "CIV-01-01", "line_item_name": "OPC Cement 53 Grade",
-         "unit_of_measurement": "Bags", "scope_quantity": 5000, "revision": 0},
-        {"scope_id": 2, "parent_item_code": "CIV-01", "parent_item_name": "Civil Works",
-         "line_item_code": "CIV-01-02", "line_item_name": "TMT Steel 12mm",
-         "unit_of_measurement": "Tonnes", "scope_quantity": 120, "revision": 0},
-        {"scope_id": 3, "parent_item_code": "CIV-01", "parent_item_name": "Civil Works",
-         "line_item_code": "CIV-01-03", "line_item_name": "M20 Ready Mix Concrete",
-         "unit_of_measurement": "Cu.M", "scope_quantity": 1200, "revision": 1},
-        {"scope_id": 4, "parent_item_code": "CIV-02", "parent_item_name": "Masonry",
-         "line_item_code": "CIV-02-01", "line_item_name": "Red Bricks (Standard)",
-         "unit_of_measurement": "Nos", "scope_quantity": 50000, "revision": 0},
-        {"scope_id": 5, "parent_item_code": "PLB-01", "parent_item_name": "Plumbing",
-         "line_item_code": "PLB-01-01", "line_item_name": "CPVC Pipes 1 inch",
-         "unit_of_measurement": "Metres", "scope_quantity": 2000, "revision": 0},
-        {"scope_id": 6, "parent_item_code": "ELE-01", "parent_item_name": "Electrical",
-         "line_item_code": "ELE-01-01", "line_item_name": "Copper Wire 2.5 sqmm",
-         "unit_of_measurement": "Metres", "scope_quantity": 8000, "revision": 0},
-        {"scope_id": 7, "parent_item_code": "FIN-01", "parent_item_name": "Finishing",
-         "line_item_code": "FIN-01-01", "line_item_name": "Interior Emulsion Paint",
-         "unit_of_measurement": "Litres", "scope_quantity": 3000, "revision": 0},
-    ])
-
+    pbs = _boq_scope_df.copy()
+    if pbs.empty: return pd.DataFrame()
+    
+    pbs["project_id"] = pd.to_numeric(pbs["project_id"], errors="coerce")
+    pbs = pbs[pbs["project_id"] == project_id]
+    pbs = pbs.rename(columns={"id": "scope_id"})
+    
+    bl = _boq_lines_df.copy()
+    bh = _boq_header_df.copy()
+    
+    if not bl.empty:
+        bl["id"] = pd.to_numeric(bl["id"], errors="coerce")
+        pbs["boq_lines_id"] = pd.to_numeric(pbs["boq_lines_id"], errors="coerce")
+        pbs = pbs.merge(bl, left_on="boq_lines_id", right_on="id", how="inner")
+        
+        if not bh.empty:
+            bh["id"] = pd.to_numeric(bh["id"], errors="coerce")
+            pbs["boq_header_id"] = pd.to_numeric(pbs["boq_header_id"], errors="coerce")
+            pbs = pbs.merge(bh, left_on="boq_header_id", right_on="id", how="inner")
+            
+    cols = ["scope_id", "parent_item_code", "parent_item_name", "line_item_code", "line_item_name", "unit_of_measurement", "scope_quantity", "revision"]
+    available = [c for c in cols if c in pbs.columns]
+    return pbs[available].copy()
 
 # ──────────────────────────────────────────────
 # DAILY REPORT APPROVALS
 # ──────────────────────────────────────────────
-
 def get_demo_approvals(project_id: int) -> pd.DataFrame:
-    np.random.seed(project_id * 73)
-    today = _today()
-
-    days = {1: 170, 2: 82, 3: 290}
-    num_days = days.get(project_id, 90)
-
-    submitters = {
-        1: "Rajesh Kumar",
-        2: "Srinivas Reddy",
-        3: "Arjun Singh",
-    }
-
-    rows = []
-    for day_offset in range(num_days):
-        report_date = today - timedelta(days=num_days - day_offset)
-        # Skip some days randomly for project 3 to create report gaps
-        if project_id == 3 and day_offset > num_days - 10 and np.random.random() < 0.5:
-            continue
-        status = np.random.choice(
-            ["APPROVED", "APPROVED", "APPROVED", "PENDING", "REJECTED"],
-            p=[0.6, 0.2, 0.1, 0.07, 0.03],
-        )
-        rows.append({
-            "reported_date": report_date,
-            "reporting_time": np.random.choice(["MORNING", "EVENING"]),
-            "status": status,
-            "pe_remark": "Verified on site" if status == "APPROVED" else "Review pending",
-            "pm_remark": "Approved" if status == "APPROVED" else "",
-            "dir_remark": "",
-            "submitted_by_name": submitters.get(project_id, "Demo User"),
-        })
-
-    return pd.DataFrame(rows)
-
+    dra = _approvals_df.copy()
+    if dra.empty: return pd.DataFrame()
+    
+    dra["project_id"] = pd.to_numeric(dra["project_id"], errors="coerce")
+    dra = dra[dra["project_id"] == project_id]
+    
+    u = _users_df.copy()
+    if not u.empty:
+        u["id"] = pd.to_numeric(u["id"], errors="coerce")
+        dra["submitted_by"] = pd.to_numeric(dra["submitted_by"], errors="coerce")
+        dra = dra.merge(u, left_on="submitted_by", right_on="id", how="left")
+        dra = dra.rename(columns={"full_name": "submitted_by_name"})
+    else:
+        dra["submitted_by_name"] = "Unknown"
+        
+    cols = ["reported_date", "reporting_time", "status", "pe_remark", "pm_remark", "dir_remark", "submitted_by_name"]
+    available = [c for c in cols if c in dra.columns]
+    # sort by date
+    if 'reported_date' in available:
+        dra = dra.sort_values(by="reported_date", ascending=False)
+    return dra[available].copy()
 
 # ──────────────────────────────────────────────
 # MRS (Material Receipt Slips)
 # ──────────────────────────────────────────────
-
 def get_demo_mrs(project_id: int) -> pd.DataFrame:
-    np.random.seed(project_id * 97)
-
-    items = [
-        ("MRS-001", "OPC Cement 53 Grade", 200),
-        ("MRS-002", "TMT Steel 12mm", 15),
-        ("MRS-003", "River Sand (Fine)", 50),
-        ("MRS-004", "Red Bricks (Standard)", 5000),
-        ("MRS-005", "CPVC Pipes 1 inch", 100),
-        ("MRS-006", "M20 Ready Mix Concrete", 30),
-    ]
-
-    rows = []
-    for token_name, item_name, qty in items:
-        status = np.random.choice(["APPROVED", "PENDING", "APPROVED"])
-        rows.append({
-            "mrs_token_name": token_name,
-            "approval_status": status,
-            "approval_time": datetime.now() - timedelta(days=np.random.randint(1, 30)),
-            "mrs_recipt_name": f"RCT-{token_name}",
-            "received_quantity": qty * np.random.uniform(0.8, 1.2),
-            "line_item_name": item_name,
-        })
-
-    return pd.DataFrame(rows)
-
+    mat = _mrs_approval_df.copy()
+    if mat.empty: return pd.DataFrame()
+    
+    mat["project_id"] = pd.to_numeric(mat["project_id"], errors="coerce")
+    mat = mat[mat["project_id"] == project_id]
+    
+    md = _mrs_details_df.copy()
+    bl = _boq_lines_df.copy()
+    
+    if not md.empty:
+        md["approval_table_id"] = pd.to_numeric(md["approval_table_id"], errors="coerce")
+        mat["id"] = pd.to_numeric(mat["id"], errors="coerce")
+        mat = mat.merge(md, left_on="id", right_on="approval_table_id", how="left")
+        
+        if not bl.empty:
+            bl["id"] = pd.to_numeric(bl["id"], errors="coerce")
+            mat["line_item_id"] = pd.to_numeric(mat["line_item_id"], errors="coerce")
+            mat = mat.merge(bl, left_on="line_item_id", right_on="id", how="left")
+            
+    cols = ["mrs_token_name", "approval_status", "approval_time", "mrs_recipt_name", "received_quantity", "line_item_name"]
+    available = [c for c in cols if c in mat.columns]
+    return mat[available].copy()
 
 # ──────────────────────────────────────────────
-# USERS & TEAM
+# USERS & ROLES
 # ──────────────────────────────────────────────
-
 def get_demo_users(project_id: int) -> pd.DataFrame:
-    today = _today()
-    return pd.DataFrame([
-        {"user_id": 1, "full_name": "Vikram Sharma", "email_id": "vikram@nikithabuildtech.com",
-         "mobile": "9876543210", "role_name": "Director",
-         "status": "ACTIVE", "start_date": today - timedelta(days=365), "end_date": None},
-        {"user_id": 2, "full_name": "Priya Reddy", "email_id": "priya@nikithabuildtech.com",
-         "mobile": "9876543211", "role_name": "Project Manager",
-         "status": "ACTIVE", "start_date": today - timedelta(days=200), "end_date": None},
-        {"user_id": 3, "full_name": "Rajesh Kumar", "email_id": "rajesh@nikithabuildtech.com",
-         "mobile": "9876543212", "role_name": "Site Engineer",
-         "status": "ACTIVE", "start_date": today - timedelta(days=180), "end_date": None},
-        {"user_id": 4, "full_name": "Srinivas Rao", "email_id": "srinivas@nikithabuildtech.com",
-         "mobile": "9876543213", "role_name": "Site Engineer",
-         "status": "ACTIVE", "start_date": today - timedelta(days=150), "end_date": None},
-        {"user_id": 5, "full_name": "Anitha Kumari", "email_id": "anitha@nikithabuildtech.com",
-         "mobile": "9876543214", "role_name": "Accountant",
-         "status": "ACTIVE", "start_date": today - timedelta(days=300), "end_date": None},
-        {"user_id": 6, "full_name": "Mohammed Irfan", "email_id": "irfan@nikithabuildtech.com",
-         "mobile": "9876543215", "role_name": "Safety Officer",
-         "status": "ACTIVE", "start_date": today - timedelta(days=160), "end_date": None},
-    ])
+    pum = _pum_df.copy()
+    if pum.empty: return pd.DataFrame()
+    
+    pum["project_id"] = pd.to_numeric(pum["project_id"], errors="coerce")
+    pum = pum[pum["project_id"] == project_id]
+    
+    u = _users_df.copy()
+    r = _role_df.copy()
+    
+    if not u.empty:
+        u["id"] = pd.to_numeric(u["id"], errors="coerce")
+        pum["user_id"] = pd.to_numeric(pum["user_id"], errors="coerce")
+        pum = pum.merge(u, left_on="user_id", right_on="id", how="inner", suffixes=("", "_u"))
+        pum = pum.rename(columns={"id": "user_id"})  # Original u.id
+        
+        if not r.empty:
+            r["id"] = pd.to_numeric(r["id"], errors="coerce")
+            pum["role_id"] = pd.to_numeric(pum["role_id"], errors="coerce")
+            pum = pum.merge(r, left_on="role_id", right_on="id", how="left", suffixes=("", "_r"))
+            
+    cols = ["user_id", "full_name", "email_id", "mobile", "role_name", "status", "start_date", "end_date"]
+    available = [c for c in cols if c in pum.columns]
+    return pum[available].copy()

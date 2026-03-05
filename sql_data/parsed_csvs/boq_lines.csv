@@ -1,0 +1,235 @@
+id,created_at,description,line_item_code,line_item_name,status,unit_of_measurement,updated_at,boq_header_id
+1,2025-04-29 17:17:31.313968,Fasteners,1,Anchor Bolts,active,Nos,2025-04-29 17:17:31.314011,92
+2,2025-04-29 17:17:31.376904,Fasteners,2,Fasteners,active,Nos,2025-04-29 17:17:31.376945,92
+3,2025-04-29 17:17:31.438995,Fasteners,3,Templates,active,Nos,2025-04-29 17:17:31.439037,92
+4,2025-04-29 17:17:31.50069,Fasteners,4,Foundation Bolt,active,Nos,2025-04-29 17:17:31.500729,92
+5,2025-04-29 17:17:31.562384,Sheeting,5,Cladding (PPGL),active,Sqm,2025-04-29 17:17:31.562425,93
+6,2025-04-29 17:17:31.639198,Sheeting,6,Cladding (Puff Panels),active,Sqm,2025-04-29 17:17:31.639238,93
+7,2025-04-29 17:17:31.701008,Sheeting,7,Crimp Sheets,active,Sqm,2025-04-29 17:17:31.701047,93
+8,2025-04-29 17:17:31.762705,Sheeting,8,Deck sheet,active,Sqm,2025-04-29 17:17:31.762748,93
+9,2025-04-29 17:17:31.824516,Sheeting,9,Fascia Liner Sheet,active,Sqm,2025-04-29 17:17:31.824558,93
+10,2025-04-29 17:17:31.886224,Sheeting,10,GI Bird Mesh 25x25,active,Sqm,2025-04-29 17:17:31.886267,93
+11,2025-04-29 17:17:31.947977,Sheeting,11,Louver Ventilators,active,Sqm,2025-04-29 17:17:31.948018,93
+12,2025-04-29 17:17:32.010171,Sheeting,12,Poly Carbonate Sheets,active,Sqm,2025-04-29 17:17:32.010212,93
+13,2025-04-29 17:17:32.075713,Sheeting,13,Ridge Sheet,active,Sqm,2025-04-29 17:17:32.075752,93
+14,2025-04-29 17:17:32.138171,Sheeting,14,Ridge Ventilators,active,Nos,2025-04-29 17:17:32.138218,93
+15,2025-04-29 17:17:32.199916,Sheeting,15,Roof Insulation,active,Sqm,2025-04-29 17:17:32.199955,93
+16,2025-04-29 17:17:32.262268,Sheeting,16,Roofing sheets (BGL),active,Sqm,2025-04-29 17:17:32.262435,93
+17,2025-04-29 17:17:32.324058,Sheeting,17,Roofing sheets (PPGL),active,Sqm,2025-04-29 17:17:32.324089,93
+18,2025-04-29 17:17:32.385581,Sheeting,18,Roofing sheets (PUF Panel),active,Sqm,2025-04-29 17:17:32.385621,93
+19,2025-04-29 17:17:32.44717,Sheeting,19,Turbo Vents,active,Nos,2025-04-29 17:17:32.447203,93
+20,2025-04-29 17:17:32.508761,Sheeting Accessories,20,Canopy L flashing,active,Rmt,2025-04-29 17:17:32.508792,94
+21,2025-04-29 17:17:32.57032,Sheeting Accessories,21,Corner Trim,active,Rmt,2025-04-29 17:17:32.570353,94
+22,2025-04-29 17:17:32.632019,Sheeting Accessories,22,Down Spout  ,active,Rmt,2025-04-29 17:17:32.632052,94
+23,2025-04-29 17:17:32.693743,Sheeting Accessories,23,Eaves Gutter,active,Rmt,2025-04-29 17:17:32.693783,94
+24,2025-04-29 17:17:32.755567,Sheeting Accessories,24,Facia bottom L flashing ,active,Rmt,2025-04-29 17:17:32.7556,94
+25,2025-04-29 17:17:32.817087,Sheeting Accessories,25,Facia Liner Sheet flashing ,active,Rmt,2025-04-29 17:17:32.817119,94
+26,2025-04-29 17:17:32.878653,Sheeting Accessories,26,Facia Top L flashing ,active,Rmt,2025-04-29 17:17:32.878685,94
+27,2025-04-29 17:17:32.940317,Sheeting Accessories,27,Foam Filler ,active,Rmt,2025-04-29 17:17:32.94035,94
+28,2025-04-29 17:17:33.001985,Sheeting Accessories,28,Louver Bottom Flashing,active,Rmt,2025-04-29 17:17:33.002027,94
+29,2025-04-29 17:17:33.063849,Sheeting Accessories,29,Louver Side Flashing,active,Rmt,2025-04-29 17:17:33.063883,94
+30,2025-04-29 17:17:33.125487,Sheeting Accessories,30,Louver Top Flashing,active,Rmt,2025-04-29 17:17:33.125521,94
+31,2025-04-29 17:17:33.18708,Sheeting Accessories,31,Masonry Flashing,active,Rmt,2025-04-29 17:17:33.187111,94
+32,2025-04-29 17:17:33.248507,Sheeting Accessories,32,Metal Closer,active,Nos,2025-04-29 17:17:33.248539,94
+33,2025-04-29 17:17:33.310094,Sheeting Accessories,33,Pipes,active,Nos,2025-04-29 17:17:33.310126,94
+34,2025-04-29 17:17:33.37249,Sheeting Accessories,34,Pop Rivet,active,Nos,2025-04-29 17:17:33.372522,94
+35,2025-04-29 17:17:33.434247,Sheeting Accessories,35,Right Trim,active,Rmt,2025-04-29 17:17:33.434279,94
+36,2025-04-29 17:17:33.495972,Sheeting Accessories,36,Rolling Shutter Side Flashing,active,Rmt,2025-04-29 17:17:33.496011,94
+37,2025-04-29 17:17:33.557719,Sheeting Accessories,37,Sealent ,active,Nos,2025-04-29 17:17:33.557751,94
+38,2025-04-29 17:17:33.619378,Sheeting Accessories,38,Special  L flashing ,active,Rmt,2025-04-29 17:17:33.619411,94
+39,2025-04-29 17:17:33.681099,Sheeting Accessories,39,Valley Gutter ,active,Rmt,2025-04-29 17:17:33.681129,94
+40,2025-04-29 17:17:33.742776,Sheeting Accessories,40,Perforated Sheets,active,Sqm,2025-04-29 17:17:33.742809,94
+41,2025-04-29 17:17:33.804421,Sheeting Accessories,41,Cupping Sheet,active,Sqm,2025-04-29 17:17:33.804454,94
+42,2025-04-29 17:17:33.86605,Sheeting Accessories,42,Apron L Flashing,active,Rmt,2025-04-29 17:17:33.86608,94
+43,2025-04-29 17:17:33.927697,Sheeting Accessories,43,Reverse L Flashing,active,Rmt,2025-04-29 17:17:33.92773,94
+44,2025-04-29 17:17:33.989228,Sheeting Accessories,44,Special Gutter,active,Rmt,2025-04-29 17:17:33.989258,94
+45,2025-04-29 17:17:34.050931,Sheeting Accessories,45,UPVC Gutter,active,Rmt,2025-04-29 17:17:34.050961,94
+46,2025-04-29 17:17:34.112484,Sheeting Accessories,46,Gutter Strip,active,Nos,2025-04-29 17:17:34.112516,94
+47,2025-04-29 17:17:34.174097,Sheeting Accessories,47,GI Clamp,active,Nos,2025-04-29 17:17:34.174129,94
+48,2025-04-29 17:17:34.235857,Structural Accessories,48,Door Jamb,active,Nos,2025-04-29 17:17:34.235913,95
+49,2025-04-29 17:17:34.297412,Structural Accessories,49,Pipe Strut,active,Nos,2025-04-29 17:17:34.297448,95
+50,2025-04-29 17:17:34.35899,Structural Accessories,50,Eaves Strut,active,Nos,2025-04-29 17:17:34.359021,95
+51,2025-04-29 17:17:34.420567,Structural Accessories,51,Staircase Stinger,active,Nos,2025-04-29 17:17:34.420598,95
+52,2025-04-29 17:17:34.482246,Structural Accessories,52,Staircase,active,Nos,2025-04-29 17:17:34.482278,95
+53,2025-04-29 17:17:34.543998,Structural Accessories,53,Chequred Step,active,Nos,2025-04-29 17:17:34.544029,95
+54,2025-04-29 17:17:34.605714,Structural Accessories,54,Handrail,active,Nos,2025-04-29 17:17:34.605758,95
+55,2025-04-29 17:17:34.667466,Structural Accessories,55,Loose Angle,active,Nos,2025-04-29 17:17:34.6675,95
+56,2025-04-29 17:17:34.729268,Structural Accessories,56,Chequred plate Support Angle,active,Nos,2025-04-29 17:17:34.72931,95
+57,2025-04-29 17:17:34.790893,Structural Accessories,57,Sag Rod,active,Nos,2025-04-29 17:17:34.790926,95
+58,2025-04-29 17:17:34.852722,Structural Accessories,58,Brace Rod,active,Nos,2025-04-29 17:17:34.852753,95
+59,2025-04-29 17:17:34.914606,Structural Accessories,59,Vertical Bracings,active,Nos,2025-04-29 17:17:34.914638,95
+60,2025-04-29 17:17:34.976226,Structural Accessories,60,Horizontal Bracings,active,Nos,2025-04-29 17:17:34.976256,95
+61,2025-04-29 17:17:35.037794,Structural Accessories,61,Angle Bracings,active,Nos,2025-04-29 17:17:35.037827,95
+62,2025-04-29 17:17:35.099352,Structural Accessories,62,Sag Angle,active,Nos,2025-04-29 17:17:35.0994,95
+63,2025-04-29 17:17:35.161636,Structural Accessories,63,Channel,active,Nos,2025-04-29 17:17:35.161668,95
+64,2025-04-29 17:17:35.223186,Structural Accessories,64,Window Channel,active,Nos,2025-04-29 17:17:35.223217,95
+65,2025-04-29 17:17:35.285112,Structural Accessories,65,Louver Channel,active,Nos,2025-04-29 17:17:35.285149,95
+66,2025-04-29 17:17:35.346849,Structural Accessories,66,Horizontal Rod Brace,active,Nos,2025-04-29 17:17:35.346881,95
+67,2025-04-29 17:17:35.408521,Structural Accessories,67,Vertical Rod Brace,active,Nos,2025-04-29 17:17:35.408552,95
+68,2025-04-29 17:17:35.470123,Structural Accessories,68,Flange Brace,active,Nos,2025-04-29 17:17:35.470155,95
+69,2025-04-29 17:17:35.532279,Structural Accessories,69,Fascia Cleat,active,Nos,2025-04-29 17:17:35.532311,95
+70,2025-04-29 17:17:35.593872,Structural Accessories,70,Fascia Horizontal Girt,active,Nos,2025-04-29 17:17:35.593904,95
+71,2025-04-29 17:17:35.655626,Structural Accessories,71,Fascia Structure,active,Nos,2025-04-29 17:17:35.655657,95
+72,2025-04-29 17:17:35.717443,Structural Accessories,72,Fascia Vertical Girt,active,Nos,2025-04-29 17:17:35.717474,95
+73,2025-04-29 17:17:35.779375,Structural Accessories,73,Trim Angle,active,Nos,2025-04-29 17:17:35.779407,95
+74,2025-04-29 17:17:35.841115,Structural Accessories,74,Door Frame,active,Nos,2025-04-29 17:17:35.841146,95
+75,2025-04-29 17:17:35.902639,Structural Accessories,75,Cleat,active,Nos,2025-04-29 17:17:35.902697,95
+76,2025-04-29 17:17:35.964276,Structural Accessories,76,Splice Plate,active,Nos,2025-04-29 17:17:35.964307,95
+77,2025-04-29 17:17:36.02605,Structural Accessories,77,Roof Bracings,active,Nos,2025-04-29 17:17:36.026082,95
+78,2025-04-29 17:17:36.087839,Structural Accessories,78,Loose Gusset Plate,active,Nos,2025-04-29 17:17:36.087872,95
+79,2025-04-29 17:17:36.14958,Structural Accessories,79,Pour Stopper,active,Nos,2025-04-29 17:17:36.149613,95
+80,2025-04-29 17:17:36.211321,Structural Accessories,80,Purlin Splice Plate,active,Nos,2025-04-29 17:17:36.211351,95
+81,2025-04-29 17:17:36.27301,Structural Accessories,81,Thread Support Pan,active,Nos,2025-04-29 17:17:36.273044,95
+82,2025-04-29 17:17:36.33464,Structural Accessories,82,Sleeve Plate,active,Nos,2025-04-29 17:17:36.334671,95
+83,2025-04-29 17:17:36.396214,Structural Accessories,83,Support Angle,active,Nos,2025-04-29 17:17:36.396244,95
+84,2025-04-29 17:17:36.457776,Structural Accessories,84,Canopy Bracing,active,Nos,2025-04-29 17:17:36.457808,95
+85,2025-04-29 17:17:36.519349,Structural Accessories,85,Roof Tie Beam,active,Nos,2025-04-29 17:17:36.519379,95
+86,2025-04-29 17:17:36.581234,Structural Accessories,86,Canopy Splice Plate,active,Nos,2025-04-29 17:17:36.581265,95
+87,2025-04-29 17:17:36.64294,Structural Accessories,87,Wall Bracings,active,Nos,2025-04-29 17:17:36.642973,95
+88,2025-04-29 17:17:36.704542,Structural Accessories,88,Canopy Purlin,active,Nos,2025-04-29 17:17:36.704574,95
+89,2025-04-29 17:17:36.767608,Structural Accessories,89,Knee Bracings,active,Nos,2025-04-29 17:17:36.767639,95
+90,2025-04-29 17:17:36.829319,Structural Accessories,90,End Plate,active,Nos,2025-04-29 17:17:36.829349,95
+91,2025-04-29 17:17:36.89096,Structural Accessories,91,Loose shear Plate,active,Nos,2025-04-29 17:17:36.890992,95
+92,2025-04-29 17:17:36.952522,Structural Accessories,92,Loose Stiffner Plate,active,Nos,2025-04-29 17:17:36.952554,95
+93,2025-04-29 17:17:37.014399,Structural Accessories,93,Misc Tube,active,Nos,2025-04-29 17:17:37.014432,95
+94,2025-04-29 17:17:37.076064,Structural Accessories,94,Reinforcement Plate,active,Nos,2025-04-29 17:17:37.076096,95
+95,2025-04-29 17:17:37.139313,Structural Accessories,95,Top Plate,active,Nos,2025-04-29 17:17:37.139343,95
+96,2025-04-29 17:17:37.201057,Structural Accessories,96,Edge Angle,active,Nos,2025-04-29 17:17:37.201099,95
+97,2025-04-29 17:17:37.262677,Structural Accessories,97,Mono Rail,active,Nos,2025-04-29 17:17:37.262712,95
+98,2025-04-29 17:17:37.324258,Structural Accessories,98,Gusset Plate,active,Nos,2025-04-29 17:17:37.324291,95
+99,2025-04-29 17:17:37.38574,Structural Accessories,99,Eaves Sleeve Plate,active,Nos,2025-04-29 17:17:37.385771,95
+100,2025-04-29 17:17:37.447334,Structural Accessories,100,Loose Plate,active,Nos,2025-04-29 17:17:37.447366,95
+101,2025-04-29 17:17:37.509004,Structures,101,Column,active,Nos,2025-04-29 17:17:37.509035,96
+102,2025-04-29 17:17:37.570688,Structures,102,Intermediate Column,active,Nos,2025-04-29 17:17:37.570717,96
+103,2025-04-29 17:17:37.632497,Structures,103,Rigid Column,active,Nos,2025-04-29 17:17:37.632527,96
+104,2025-04-29 17:17:37.694238,Structures,104,End column,active,Nos,2025-04-29 17:17:37.694269,96
+105,2025-04-29 17:17:37.755933,Structures,105,Portal Column,active,Nos,2025-04-29 17:17:37.755963,96
+106,2025-04-29 17:17:37.817479,Structures,106,Beam,active,Nos,2025-04-29 17:17:37.817508,96
+107,2025-04-29 17:17:37.87916,Structures,107,Tie Beam,active,Nos,2025-04-29 17:17:37.879192,96
+108,2025-04-29 17:17:37.940773,Structures,108,Floor Beam,active,Nos,2025-04-29 17:17:37.940804,96
+109,2025-04-29 17:17:38.00231,Structures,109,Portal Beam,active,Nos,2025-04-29 17:17:38.00234,96
+110,2025-04-29 17:17:38.064339,Structures,110,Canopy Beam,active,Nos,2025-04-29 17:17:38.06437,96
+111,2025-04-29 17:17:38.126082,Structures,111,Staircase Beam,active,Nos,2025-04-29 17:17:38.126114,96
+112,2025-04-29 17:17:38.18771,Structures,112,Mezzanine Beam,active,Nos,2025-04-29 17:17:38.18774,96
+113,2025-04-29 17:17:38.249212,Structures,113,Rafter,active,Nos,2025-04-29 17:17:38.24927,96
+114,2025-04-29 17:17:38.310854,Structures,114,Truss ,active,Nos,2025-04-29 17:17:38.31092,96
+115,2025-04-29 17:17:38.372501,Structures,115,Main Truss,active,Nos,2025-04-29 17:17:38.372551,96
+116,2025-04-29 17:17:38.434285,Structures,116,Sub Truss,active,Nos,2025-04-29 17:17:38.43432,96
+117,2025-04-29 17:17:38.495997,Structures,117,Purlin,active,Nos,2025-04-29 17:17:38.496027,96
+118,2025-04-29 17:17:38.557754,Structures,118,C Purlin,active,Nos,2025-04-29 17:17:38.557781,96
+119,2025-04-29 17:17:38.619583,Structures,119,Z purlin,active,Nos,2025-04-29 17:17:38.619623,96
+120,2025-04-29 17:17:38.681629,Structures,120,Eaves Purlin,active,Nos,2025-04-29 17:17:38.681673,96
+121,2025-04-29 17:17:38.743323,Structures,121,Girt,active,Nos,2025-04-29 17:17:38.74335,96
+122,2025-04-29 17:17:38.805002,Structures,122,Rigid Moniter,active,Nos,2025-04-29 17:17:38.805059,96
+123,2025-04-29 17:17:38.866596,Structures,123,Truss Diagonal,active,Nos,2025-04-29 17:17:38.866622,96
+124,2025-04-29 17:17:38.928205,Structures,124,Valley Beam,active,Nos,2025-04-29 17:17:38.928233,96
+125,2025-04-29 17:17:38.989776,Structures,125,Frame,active,Nos,2025-04-29 17:17:38.989835,96
+126,2025-04-29 17:17:39.051682,Structures,126,Lattice,active,Nos,2025-04-29 17:17:39.051735,96
+127,2025-04-29 17:17:39.11433,Structures,127,Crane Beam,active,Nos,2025-04-29 17:17:39.114375,96
+128,2025-04-29 17:17:39.176185,Structures,128,Girder,active,Nos,2025-04-29 17:17:39.176207,96
+129,2025-04-29 17:17:39.237737,Structures,129,Arch Beam,active,Nos,2025-04-29 17:17:39.237757,96
+130,2025-04-29 17:17:39.299301,Structural Accessories,130,Embeded Plate,active,Nos,2025-04-29 17:17:39.299324,95
+131,2025-04-29 17:17:39.361042,Sheeting Accessories,131,Gutter Flashing,active,Rmt,2025-04-29 17:17:39.361065,94
+132,2025-04-29 17:17:39.422644,Sheeting Accessories,132,Butterfly Flashing,active,Nos,2025-04-29 17:17:39.422665,94
+133,2025-04-29 17:17:39.484414,Structures,133,Walk Beam,active,Nos,2025-04-29 17:17:39.484435,96
+134,2025-04-29 17:17:39.546011,Structural Accessories,134,Clip,active,Nos,2025-04-29 17:17:39.546035,95
+135,2025-04-29 17:17:39.607577,Structural Accessories,135,Cage Ladder,active,Nos,2025-04-29 17:17:39.607599,95
+136,2025-04-29 17:17:39.66906,Structural Accessories,136,Twin member,active,Nos,2025-04-29 17:17:39.669081,95
+137,2025-04-29 17:17:39.730591,Structural Accessories,137,Angle Clip,active,Nos,2025-04-29 17:17:39.730615,95
+138,2025-04-29 17:17:39.792016,Structural Accessories,138,Dia Angle,active,Nos,2025-04-29 17:17:39.792038,95
+139,2025-04-29 17:17:39.853578,Structural Accessories,139,Gutter Angle,active,Nos,2025-04-29 17:17:39.8536,95
+140,2025-04-29 17:17:39.915014,Structural Accessories,140,Headder,active,Nos,2025-04-29 17:17:39.915034,95
+141,2025-04-29 17:17:39.976551,Structural Accessories,141,Packing Plate,active,Nos,2025-04-29 17:17:39.976573,95
+142,2025-04-29 17:17:40.038334,Structural Accessories,142,Vertical Channel,active,Nos,2025-04-29 17:17:40.038357,95
+143,2025-05-09 13:30:40.777666,Structural Accessories,143,Cleat Angle,active,Nos,2025-05-09 13:30:40.777685,95
+144,2025-05-15 15:53:08.056115,Structural Accessories,144,Bracket,active,Nos,2025-05-15 15:53:08.056145,95
+145,2025-05-15 15:53:08.120624,Structural Accessories,145,Angle ,active,Nos,2025-05-15 15:53:08.120667,95
+146,2025-05-15 15:53:08.184059,Sheeting Accessories,146,"PVC Bend 6""",active,Nos,2025-05-15 15:53:08.184088,94
+147,2025-05-15 15:53:08.247554,Sheeting Accessories,147,"PVC Down Take Pipe 6""",active,Rmt,2025-05-15 15:53:08.247585,94
+148,2025-05-15 15:53:08.31101,Sheeting Accessories,148,Reverse Corner Flashing,active,Rmt,2025-05-15 15:53:08.311045,94
+149,2025-05-15 15:53:08.374517,Sheeting Accessories,149,Canopy Drip Flashing,active,Rmt,2025-05-15 15:53:08.374545,94
+150,2025-05-15 15:53:08.438025,Sheeting Accessories,150,Apron Flashing,active,Rmt,2025-05-15 15:53:08.438053,94
+151,2025-05-15 15:53:08.501411,Sheeting Accessories,151,Cup Flashing,active,Rmt,2025-05-15 15:53:08.50144,94
+152,2025-05-15 15:53:08.564987,Sheeting Accessories,152,SDS Screws,active,Nos,2025-05-15 15:53:08.565016,94
+153,2025-05-15 15:53:08.628878,Sheeting Accessories,153,Standing Seam Clips,active,Nos,2025-05-15 15:53:08.628906,94
+154,2025-05-15 15:53:08.692302,Sheeting Accessories,154,GI Z Support,active,Nos,2025-05-15 15:53:08.69233,94
+155,2025-05-15 15:53:08.75585,Sheeting Accessories,155,Rolling Shutter,active,Nos,2025-05-15 15:53:08.755903,94
+156,2025-05-15 15:53:08.820357,Sheeting Accessories,156,Window Top Flashing,active,Rmt,2025-05-15 15:53:08.820384,94
+157,2025-05-15 15:53:08.884152,Sheeting Accessories,157,Window Side Flashing,active,Rmt,2025-05-15 15:53:08.88419,94
+158,2025-05-15 15:53:08.947578,Sheeting Accessories,158,Window Bottom Cup Flashing,active,Rmt,2025-05-15 15:53:08.947605,94
+159,2025-05-15 22:58:06.086281,Structures,159,ICL,active,Nos,2025-05-15 22:58:06.086326,96
+160,2025-05-15 22:58:06.159696,Structures,160,MCL,active,Nos,2025-05-15 22:58:06.159736,96
+161,2025-05-15 22:58:06.226217,Structures,161,RCL,active,Nos,2025-05-15 22:58:06.226331,96
+162,2025-05-22 13:07:26.174748,Structural Accessories,162,Flat Bar,active,Nos,2025-05-22 13:07:26.174787,95
+163,2025-05-22 13:07:26.240031,Sheeting Accessories,163,J Bolts for Roof,active,Nos,2025-05-22 13:07:26.240063,94
+164,2025-05-22 13:07:26.304005,Sheeting Accessories,164,J bolts for Cladding,active,Nos,2025-05-22 13:07:26.304039,94
+165,2025-05-22 13:07:26.367817,Sheeting,165,Profile Ridge Sheet,active,Nos,2025-05-22 13:07:26.367848,93
+166,2025-05-22 13:07:26.432059,Sheeting Accessories,166,Weld Mesh,active,Nos,2025-05-22 13:07:26.432095,94
+167,2025-05-22 13:07:26.496005,Sheeting Accessories,167,Sliding Window,active,Nos,2025-05-22 13:07:26.496038,94
+168,2025-06-01 21:44:53.697529,Structures,168,Composite Beams,active,Nos,2025-06-01 21:44:53.69754,96
+169,2025-06-01 21:44:53.763153,Structures,169,Non Composite Beams,active,Nos,2025-06-01 21:44:53.763165,96
+170,2025-06-01 21:44:53.82774,Structures,170,Cantilever Beams,active,Nos,2025-06-01 21:44:53.827753,96
+171,2025-06-01 21:44:53.892383,Sheeting Accessories,171,Studs,active,Sqm,2025-06-01 21:44:53.892396,94
+172,2025-06-01 21:44:53.956871,,,,active,,2025-06-01 21:44:53.956882,97
+173,2025-07-10 15:57:07.100989,Structures,172,MCL Column,active,Nos,2025-07-10 15:57:07.100999,96
+174,2025-07-10 15:57:07.167616,Structures,173,RCL Column,active,Nos,2025-07-10 15:57:07.167625,96
+175,2025-07-10 15:57:07.230216,Structures,174,Canopy Rafter,active,Nos,2025-07-10 15:57:07.230227,96
+176,2025-07-10 15:57:07.292743,Structures,175,ICL Column,active,Nos,2025-07-10 15:57:07.292753,96
+177,2025-07-10 15:57:07.362799,Structural Accessories,176,Purlin Sleev,active,Nos,2025-07-10 15:57:07.362809,95
+178,2025-07-10 15:57:07.425274,Structures,177,Gantry Beam,active,Nos,2025-07-10 15:57:07.425284,96
+179,2025-07-10 15:57:07.487646,Structural Accessories,178,Cladding Bracing,active,Nos,2025-07-10 15:57:07.487656,95
+180,2025-07-10 15:57:07.550153,Structural Accessories,179,Brace Angle,active,Nos,2025-07-10 15:57:07.550163,95
+181,2025-07-10 15:57:07.612621,Structural Accessories,180,Rack Angle,active,Nos,2025-07-10 15:57:07.61263,95
+182,2025-07-10 15:57:07.675168,Structural Accessories,181,Purlin Clip,active,Nos,2025-07-10 15:57:07.675179,95
+183,2025-07-10 15:57:07.737716,Structural Accessories,182,Connection Plate,active,Nos,2025-07-10 15:57:07.737727,95
+184,2025-07-10 15:57:07.800219,Structural Accessories,183,Louver Girt,active,Nos,2025-07-10 15:57:07.800229,95
+185,2025-07-10 15:57:07.862693,Structural Accessories,184,Louver Frame,active,Nos,2025-07-10 15:57:07.862704,95
+186,2025-07-10 15:57:07.925177,Structural Accessories,185,Ridge Vent,active,Nos,2025-07-10 15:57:07.925188,95
+187,2025-07-10 15:57:07.987701,Structural Accessories,186,Stub,active,Nos,2025-07-10 15:57:07.987711,95
+188,2025-07-10 15:57:08.050218,Structural Accessories,187,Tray Runner,active,Nos,2025-07-10 15:57:08.050228,95
+189,2025-07-10 15:57:08.112763,Structural Accessories,188,Louver Clip,active,Nos,2025-07-10 15:57:08.112773,95
+190,2025-08-29 17:35:26.099535,Structures,189,Jack Beam,active,Nos,2025-08-29 17:35:26.099548,96
+191,2025-08-29 17:35:26.163485,Structures,190,Primary Beam,active,Nos,2025-08-29 17:35:26.163496,96
+192,2025-08-29 17:35:26.22632,Structures,191,Secondary Beam,active,Nos,2025-08-29 17:35:26.226329,96
+193,2025-08-29 17:35:26.289201,Structural Accessories,192,Eaves Purlin Sleev,active,Nos,2025-08-29 17:35:26.28921,95
+194,2025-08-29 17:35:26.35209,Structural Accessories,193,Roof Life Line,active,Nos,2025-08-29 17:35:26.352102,95
+195,2025-08-29 17:35:26.414998,Structural Accessories,194,Ridge Angle,active,Nos,2025-08-29 17:35:26.415009,95
+196,2025-08-29 17:35:26.477939,Structural Accessories,195,Roof Moniter,active,Nos,2025-08-29 17:35:26.47795,95
+197,2025-09-08 11:00:25.405112,SHEETING WORKS,545454,facia sheets,active,Nos,2025-09-08 11:00:25.405151,1
+198,2025-09-17 13:31:33.754562,Structures,196,Fascia Column,active,Nos,2025-09-17 13:31:33.754579,96
+199,2025-09-17 13:31:33.820534,Structures,197,Mezzanine Column,active,Nos,2025-09-17 13:31:33.820552,96
+200,2025-09-17 13:31:33.885253,Structural Accessories,198,Strut Tube,active,Nos,2025-09-17 13:31:33.885273,95
+201,2025-09-17 13:31:33.949545,Structural Accessories,199,Plate,active,Nos,2025-09-17 13:31:33.949562,95
+202,2025-09-17 13:31:34.01405,Structural Accessories,200,Stinger,active,Nos,2025-09-17 13:31:34.014069,95
+203,2025-09-17 13:31:34.078407,Fasteners,201,Hilti Bolts,active,Nos,2025-09-17 13:31:34.078423,92
+204,2025-09-17 13:31:34.142783,Sheeting,202,Fascia sheets,active,Nos,2025-09-17 13:31:34.142801,93
+205,2025-09-17 13:31:34.207257,Sheeting Accessories,203,Fascia Bottom L flashing,active,Nos,2025-09-17 13:31:34.207275,94
+206,2025-09-17 13:31:34.27192,Sheeting Accessories,204,Fascia & Roof Between Flashing,active,Nos,2025-09-17 13:31:34.27194,94
+207,2025-09-17 13:31:34.336323,Sheeting Accessories,205,Gas Can Nail,active,Nos,2025-09-17 13:31:34.336342,94
+208,2025-09-17 13:31:34.401106,Sheeting Accessories,206,Hilti Nails,active,Nos,2025-09-17 13:31:34.401125,94
+209,2025-09-17 13:31:34.465509,Sheeting Accessories,207,Butyl Tape,active,Nos,2025-09-17 13:31:34.465529,94
+210,2026-02-17 12:54:12.466623,Sheeting Accessories,209,Louver Girt ,active,Nos,2026-02-17 12:54:12.466663,94
+211,2026-02-17 12:54:12.558025,Sheeting Accessories,210,Roof Purlin,active,Nos,2026-02-17 12:54:12.558065,94
+212,2026-02-17 12:54:12.6216,Sheeting Accessories,215,Ridge Monitor Girt,active,Nos,2026-02-17 12:54:12.621638,94
+213,2026-02-17 12:54:12.685337,Structures,216,Louver Purlin,active,Nos,2026-02-17 12:54:12.685369,96
+214,2026-02-17 12:54:12.748889,Structures,218,SUPPORTING BEAM,active,Nos,2026-02-17 12:54:12.748922,96
+215,2026-02-17 12:54:12.812352,Sheeting Accessories,219,GRATING,active,Nos,2026-02-17 12:54:12.812384,94
+216,2026-02-17 12:54:12.876154,Sheeting Accessories,220,RIDGE MONITOR,active,Nos,2026-02-17 12:54:12.876185,94
+217,2026-02-17 12:54:12.93959,Sheeting Accessories,221,LOUVER FRAME,active,Nos,2026-02-17 12:54:12.939626,94
+218,2026-02-17 12:54:13.003246,Structural Accessories,222,PIPE STRUT ,active,Nos,2026-02-17 12:54:13.003281,95
+219,2026-02-17 12:54:13.066725,Structural Accessories,223,GANTRY BRACE,active,Nos,2026-02-17 12:54:13.066758,95
+220,2026-02-17 12:54:13.130417,Structural Accessories,224,GANTRY STUB,active,Nos,2026-02-17 12:54:13.130453,95
+221,2026-02-17 12:54:13.194007,Sheeting Accessories,225,LOUVER GIRT,active,Nos,2026-02-17 12:54:13.194038,94
+222,2026-02-17 12:54:13.25762,Structural Accessories,226,RIDGE MONITOR LOUVER SUPPORT,active,Nos,2026-02-17 12:54:13.257653,95
+223,2026-02-17 12:54:13.321205,Structural Accessories,227,RIDGE MONITOR LOUVER PURLIN,active,Nos,2026-02-17 12:54:13.321238,95
+224,2026-02-17 12:54:13.384995,Structural Accessories,228,BEND SAGROD,active,Nos,2026-02-17 12:54:13.385157,95
+225,2026-02-17 12:54:13.449221,Structural Accessories,229,SAGROD,active,Nos,2026-02-17 12:54:13.449255,95
+226,2026-02-17 12:54:13.513225,Sheeting Accessories,230,LOUVER CLEAT,active,Nos,2026-02-17 12:54:13.513257,94
+227,2026-02-20 15:08:39.327687,Sheeting Accessories,231,LOOSE CLIP,active,Nos,2026-02-20 15:08:39.327718,94
+228,2026-02-20 15:08:39.394996,Structures,232,GUTTER BEAM,active,Nos,2026-02-20 15:08:39.395026,96
+229,2026-02-20 15:08:39.457457,Sheeting Accessories,233,SUPPORT CHANNEL,active,Nos,2026-02-20 15:08:39.457494,94
+230,2026-02-20 15:08:39.519886,Sheeting Accessories,234,INSERT PLATE,active,Nos,2026-02-20 15:08:39.519915,94
+231,2026-02-21 10:56:51.415067,Sheeting Accessories,212,Louver cleat,active,Nos,2026-02-21 10:56:51.415101,94
+232,2026-02-21 10:56:51.483692,Structures,213,Supporting beam,active,Nos,2026-02-21 10:56:51.483726,96
+233,2026-02-21 10:56:51.547259,Sheeting Accessories,214,Grating,active,Nos,2026-02-21 10:56:51.547288,94
+234,2026-02-21 10:56:51.610724,Sheeting Accessories,217,Gantry stub,active,Nos,2026-02-21 10:56:51.610753,94
