@@ -23,8 +23,8 @@ user = get_current_user()
 
 st.markdown("""
 <div style="text-align:center; padding:10px 0 20px 0;">
-    <h1 style="color:#f8f9fa; font-weight:300;">👤 Admin Panel</h1>
-    <p style="color:#8c9097; letter-spacing:1.5px; text-transform:uppercase;">
+    <h1 style="color:#1e293b; font-weight:300;">👤 Admin Panel</h1>
+    <p style="color:#64748b; letter-spacing:1.5px; text-transform:uppercase;">
         User Management • Project Setup • Labour Categories
     </p>
 </div>

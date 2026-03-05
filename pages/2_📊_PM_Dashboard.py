@@ -27,8 +27,8 @@ user = get_current_user()
 
 st.markdown("""
 <div style="text-align:center; padding:10px 0 20px 0;">
-    <h1 style="color:#f8f9fa; font-weight:300;">📊 Project Manager Dashboard</h1>
-    <p style="color:#8c9097; letter-spacing:1.5px; text-transform:uppercase;">
+    <h1 style="color:#1e293b; font-weight:300;">📊 Project Manager Dashboard</h1>
+    <p style="color:#64748b; letter-spacing:1.5px; text-transform:uppercase;">
         Multi-Project View & Approvals
     </p>
 </div>
@@ -110,7 +110,7 @@ with tab_overview:
 # TAB: APPROVALS
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 with tab_approvals:
-    st.markdown('<p style="font-size:1.1rem; color:#e5e7eb;">Pending PE Daily Reports for Approval</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:1.1rem; color:#475569;">Pending PE Daily Reports for Approval</p>', unsafe_allow_html=True)
 
     # Get submitted reports from session state
     submitted = st.session_state.get("submitted_reports", [])
@@ -166,7 +166,7 @@ with tab_approvals:
 # TAB: SUBMIT FOR ABSENT PE
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 with tab_absent:
-    st.markdown('<p style="font-size:1.1rem; color:#e5e7eb;">Submit Daily Report on Behalf of Absent PE</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:1.1rem; color:#475569;">Submit Daily Report on Behalf of Absent PE</p>', unsafe_allow_html=True)
 
     proj_options = []
     for _, p in pm_projects.iterrows():

@@ -26,8 +26,8 @@ user = get_current_user()
 
 st.markdown("""
 <div style="text-align:center; padding:10px 0 20px 0;">
-    <h1 style="color:#f8f9fa; font-weight:300;">💰 Budget & Analytics</h1>
-    <p style="color:#8c9097; letter-spacing:1.5px; text-transform:uppercase;">
+    <h1 style="color:#1e293b; font-weight:300;">💰 Budget & Analytics</h1>
+    <p style="color:#64748b; letter-spacing:1.5px; text-transform:uppercase;">
         Performance Tracking • S-Curve • Achievements
     </p>
 </div>
@@ -145,7 +145,7 @@ with tab_scurve:
 
         fig.update_layout(
             height=400, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            font_color="#8c9097",
+            font_color="#475569",
             xaxis=dict(gridcolor="rgba(255,255,255,0.05)", title="Date"),
             yaxis=dict(gridcolor="rgba(255,255,255,0.05)", title="Amount (₹)"),
             legend=dict(orientation="h", y=-0.15),
@@ -192,7 +192,7 @@ with tab_achieve:
             color = "#10b981" if overall_pct >= 80 else "#f59e0b" if overall_pct >= 50 else "#ef4444"
             st.markdown(f"""<div style="padding:10px; text-align:center;">
                 <p style="font-size:2.5rem; font-weight:300; color:{color}; margin:0;">{overall_pct}%</p>
-                <p style="font-size:0.75rem; color:#8c9097; text-transform:uppercase;">Overall Achievement</p>
+                <p style="font-size:0.75rem; color:#64748b; text-transform:uppercase;">Overall Achievement</p>
             </div>""", unsafe_allow_html=True)
     else:
         # Show demo achievement data
@@ -231,7 +231,7 @@ with tab_charts:
             exp_cats = expenses_df.groupby("parent_type")["amount"].sum().reset_index()
             fig_exp = px.pie(exp_cats, values="amount", names="parent_type", hole=0.4,
                              color_discrete_sequence=["#d4af37", "#10b981", "#ef4444", "#6366f1", "#f59e0b"])
-            fig_exp.update_layout(height=300, paper_bgcolor="rgba(0,0,0,0)", font_color="#8c9097")
+            fig_exp.update_layout(height=300, paper_bgcolor="rgba(0,0,0,0)", font_color="#475569")
             st.plotly_chart(fig_exp, use_container_width=True)
         else:
             st.info("No expense data.")
@@ -244,7 +244,7 @@ with tab_charts:
                             color_discrete_sequence=["#d4af37"])
             fig_mp.update_layout(
                 height=300, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                font_color="#8c9097", xaxis_title="", yaxis_title="Count",
+                font_color="#475569", xaxis_title="", yaxis_title="Count",
             )
             st.plotly_chart(fig_mp, use_container_width=True)
         else:
@@ -268,7 +268,7 @@ with tab_charts:
 
         fig_trend.update_layout(
             height=350, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            font_color="#8c9097",
+            font_color="#475569",
             yaxis=dict(title="Daily (₹)", gridcolor="rgba(255,255,255,0.05)"),
             yaxis2=dict(title="Cumulative (₹)", overlaying="y", side="right"),
             xaxis=dict(gridcolor="rgba(255,255,255,0.05)"),
@@ -288,6 +288,6 @@ with tab_charts:
                           color_discrete_sequence=["#6366f1"])
         fig_mach.update_layout(
             height=250, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            font_color="#8c9097", xaxis_title="Records", yaxis_title="",
+            font_color="#475569", xaxis_title="Records", yaxis_title="",
         )
         st.plotly_chart(fig_mach, use_container_width=True)

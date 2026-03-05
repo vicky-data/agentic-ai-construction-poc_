@@ -55,13 +55,13 @@ st.markdown("""
     .kpi-value {
         font-size: 2.2rem;
         font-weight: 300;
-        color: #f8f9fa;
+        color: #1e293b;
         margin: 0;
         line-height: 1.1;
     }
     .kpi-label {
         font-size: 0.75rem;
-        color: #8c9097;
+        color: #64748b;
         text-transform: uppercase;
         letter-spacing: 1.5px;
         margin-top: 10px;
@@ -203,7 +203,7 @@ if not is_authenticated():
     # ── LOGIN PAGE ──
     st.markdown("""
         <div style="text-align:center; padding: 30px 0 10px 0;">
-            <h1 style="color: #f8f9fa; font-weight: 300; font-size: 2.5rem;">
+            <h1 style="color: #1e293b; font-weight: 300; font-size: 2.5rem;">
                 🏗️ ConstructIQ
             </h1>
             <p style="color: #8c9097; font-size: 1rem; letter-spacing: 1px;">
@@ -254,7 +254,7 @@ else:
 
     st.markdown(f"""
         <div style="text-align:center; padding: 20px 0;">
-            <h1 style="color: #f8f9fa; font-weight: 300;">
+            <h1 style="color: #1e293b; font-weight: 300;">
                 Welcome, {user['full_name']}
             </h1>
             <p style="color: #8c9097; letter-spacing: 1.5px; text-transform: uppercase;">

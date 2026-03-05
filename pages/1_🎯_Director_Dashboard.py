@@ -32,8 +32,8 @@ user = get_current_user()
 # ── Header ──
 st.markdown("""
 <div style="text-align:center; padding:10px 0 20px 0;">
-    <h1 style="color:#f8f9fa; font-weight:300;">🎯 Director Dashboard</h1>
-    <p style="color:#8c9097; letter-spacing:1.5px; text-transform:uppercase;">
+    <h1 style="color:#1e293b; font-weight:300;">🎯 Director Dashboard</h1>
+    <p style="color:#64748b; letter-spacing:1.5px; text-transform:uppercase;">
         Organization-Level Analytics
     </p>
 </div>
@@ -90,29 +90,29 @@ for _, proj in projects_df.iterrows():
 c1, c2, c3, c4 = st.columns(4)
 with c1:
     st.markdown(f"""<div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; text-align:center;">
-        <p style="font-size:2.2rem; font-weight:300; color:#f8f9fa; margin:0;">{len(projects_df)}</p>
-        <p style="font-size:0.75rem; color:#8c9097; text-transform:uppercase; letter-spacing:1.5px; margin-top:10px;">Total Projects</p>
+        <p style="font-size:2.2rem; font-weight:300; color:#1e293b; margin:0;">{len(projects_df)}</p>
+        <p style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:1.5px; margin-top:10px;">Total Projects</p>
     </div>""", unsafe_allow_html=True)
 with c2:
     st.markdown(f"""<div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; text-align:center;">
-        <p style="font-size:2.2rem; font-weight:300; color:#f8f9fa; margin:0;">₹{total_budget/1e7:.1f}Cr</p>
-        <p style="font-size:0.75rem; color:#8c9097; text-transform:uppercase; letter-spacing:1.5px; margin-top:10px;">Total Budget</p>
+        <p style="font-size:2.2rem; font-weight:300; color:#1e293b; margin:0;">₹{total_budget/1e7:.1f}Cr</p>
+        <p style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:1.5px; margin-top:10px;">Total Budget</p>
     </div>""", unsafe_allow_html=True)
 with c3:
     st.markdown(f"""<div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; text-align:center;">
-        <p style="font-size:2.2rem; font-weight:300; color:#f8f9fa; margin:0;">₹{total_spent/1e7:.1f}Cr</p>
-        <p style="font-size:0.75rem; color:#8c9097; text-transform:uppercase; letter-spacing:1.5px; margin-top:10px;">Total Spent</p>
+        <p style="font-size:2.2rem; font-weight:300; color:#1e293b; margin:0;">₹{total_spent/1e7:.1f}Cr</p>
+        <p style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:1.5px; margin-top:10px;">Total Spent</p>
     </div>""", unsafe_allow_html=True)
 with c4:
     risk_color = "#ef4444" if at_risk_count > 0 else "#10b981"
     st.markdown(f"""<div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; text-align:center;">
         <p style="font-size:2.2rem; font-weight:300; color:{risk_color}; margin:0;">{at_risk_count}</p>
-        <p style="font-size:0.75rem; color:#8c9097; text-transform:uppercase; letter-spacing:1.5px; margin-top:10px;">At Risk</p>
+        <p style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:1.5px; margin-top:10px;">At Risk</p>
     </div>""", unsafe_allow_html=True)
 
 # ── Projects Table ──
 st.divider()
-st.markdown('<p style="font-size:1.2rem; color:#e5e7eb; font-weight:400;">📋 All Projects Overview</p>', unsafe_allow_html=True)
+st.markdown('<p style="font-size:1.2rem; color:#475569; font-weight:400;">📋 All Projects Overview</p>', unsafe_allow_html=True)
 
 progress_table = pd.DataFrame(all_progress)
 st.dataframe(progress_table, use_container_width=True, height=250)
@@ -122,7 +122,7 @@ st.divider()
 col_s, col_pie = st.columns(2)
 
 with col_s:
-    st.markdown('<p style="font-size:1.2rem; color:#e5e7eb; font-weight:400;">📈 S-Curve — Planned vs Actual Spend</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:1.2rem; color:#475569; font-weight:400;">📈 S-Curve — Planned vs Actual Spend</p>', unsafe_allow_html=True)
 
     # Aggregate expenses across all projects
     all_expenses = []
@@ -155,7 +155,7 @@ with col_s:
         ))
         fig_s.update_layout(
             height=350, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            font_color="#8c9097", margin=dict(l=20, r=20, t=20, b=20),
+            font_color="#475569", margin=dict(l=20, r=20, t=20, b=20),
             xaxis=dict(gridcolor="rgba(255,255,255,0.05)"),
             yaxis=dict(gridcolor="rgba(255,255,255,0.05)", title="Amount (₹)"),
             legend=dict(orientation="h", y=-0.15),
@@ -166,14 +166,14 @@ with col_s:
 
 # Expense Pie chart
 with col_pie:
-    st.markdown('<p style="font-size:1.2rem; color:#e5e7eb; font-weight:400;">💰 Expense Distribution</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:1.2rem; color:#475569; font-weight:400;">💰 Expense Distribution</p>', unsafe_allow_html=True)
     if all_expenses:
         combined_cat = pd.concat(all_expenses)
         cat_totals = combined_cat.groupby("parent_type")["amount"].sum().reset_index()
         fig_pie = px.pie(cat_totals, values="amount", names="parent_type", hole=0.45,
                          color_discrete_sequence=["#d4af37", "#10b981", "#ef4444", "#6366f1", "#f59e0b"])
         fig_pie.update_layout(
-            height=350, paper_bgcolor="rgba(0,0,0,0)", font_color="#8c9097",
+            height=350, paper_bgcolor="rgba(0,0,0,0)", font_color="#475569",
             margin=dict(l=20, r=20, t=20, b=20), legend=dict(orientation="h", y=-0.15),
         )
         st.plotly_chart(fig_pie, use_container_width=True)

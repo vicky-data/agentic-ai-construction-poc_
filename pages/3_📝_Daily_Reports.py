@@ -23,8 +23,8 @@ user = get_current_user()
 
 st.markdown("""
 <div style="text-align:center; padding:10px 0 20px 0;">
-    <h1 style="color:#f8f9fa; font-weight:300;">📝 Daily Report Submission</h1>
-    <p style="color:#8c9097; letter-spacing:1.5px; text-transform:uppercase;">
+    <h1 style="color:#1e293b; font-weight:300;">📝 Daily Report Submission</h1>
+    <p style="color:#64748b; letter-spacing:1.5px; text-transform:uppercase;">
         Morning • Afternoon • Evening
     </p>
 </div>
@@ -136,7 +136,7 @@ with tab_submit:
             color = "#10b981" if achievement_pct >= 80 else "#f59e0b" if achievement_pct >= 50 else "#ef4444"
             st.markdown(f"""<div style="padding:20px; text-align:center;">
                 <p style="font-size:2rem; font-weight:300; color:{color}; margin:0;">{achievement_pct}%</p>
-                <p style="font-size:0.75rem; color:#8c9097; text-transform:uppercase; letter-spacing:1.5px;">Achievement</p>
+                <p style="font-size:0.75rem; color:#64748b; text-transform:uppercase; letter-spacing:1.5px;">Achievement</p>
             </div>""", unsafe_allow_html=True)
         else:
             st.caption("Enter target to see achievement %")
@@ -189,7 +189,7 @@ with tab_submit:
 # TAB: REPORT HISTORY
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 with tab_history:
-    st.markdown('<p style="font-size:1.1rem; color:#e5e7eb;">📋 Your Submitted Reports</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:1.1rem; color:#475569;">📋 Your Submitted Reports</p>', unsafe_allow_html=True)
 
     my_reports = [r for r in st.session_state.get("submitted_reports", [])
                   if r.get("submitted_by") == user["full_name"] or user["role"] in ("Admin", "Project Manager")]

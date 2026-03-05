@@ -20,8 +20,8 @@ user = get_current_user()
 
 st.markdown("""
 <div style="text-align:center; padding:10px 0 20px 0;">
-    <h1 style="color:#f8f9fa; font-weight:300;">📦 BOQ & Material Receipt Slips</h1>
-    <p style="color:#8c9097; letter-spacing:1.5px; text-transform:uppercase;">
+    <h1 style="color:#1e293b; font-weight:300;">📦 BOQ & Material Receipt Slips</h1>
+    <p style="color:#64748b; letter-spacing:1.5px; text-transform:uppercase;">
         Bill of Quantities • MRS Management
     </p>
 </div>
@@ -205,7 +205,7 @@ with tab_material_compare:
                      color_discrete_sequence=["#d4af37", "#6b7280"])
         fig.update_layout(
             height=350, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-            font_color="#8c9097", xaxis_title="", yaxis_title="Quantity",
+            font_color="#475569", xaxis_title="", yaxis_title="Quantity",
             legend=dict(orientation="h", y=-0.2),
         )
         st.plotly_chart(fig, use_container_width=True)
