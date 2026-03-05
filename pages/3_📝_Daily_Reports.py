@@ -62,7 +62,9 @@ with tab_submit:
         pname = p.get("project_name", "Project #" + str(pid))
         proj_options.append(pname + " (#" + str(pid) + ")")
     sel_proj = st.selectbox("🏗️ Select Project", options=proj_options)
-    if not my_proj_df.empty and id_col in my_proj_df.columns:
+    if sel_proj:
+        sel_proj_id = int(sel_proj.split("(#")[1].replace(")", ""))
+    elif not my_proj_df.empty and id_col in my_proj_df.columns:
         sel_proj_id = my_proj_df.iloc[0][id_col]
     else:
         sel_proj_id = 1

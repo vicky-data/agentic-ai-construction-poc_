@@ -190,8 +190,8 @@ with tab_absent:
         if absent_pe:
             report = {
                 "id": len(st.session_state.get("submitted_reports", [])) + 100,
-                "project_id": my_projects[0] if my_projects else 1,
-                "project_name": sel_project.split("(")[0].strip(),
+                "project_id": int(sel_project.split("(#")[1].replace(")", "")) if sel_project else (my_projects[0] if my_projects else 1),
+                "project_name": sel_project.split("(")[0].strip() if sel_project else "Unknown",
                 "submitted_by": f"{absent_pe} (via PM: {user['full_name']})",
                 "date": datetime.now().strftime("%Y-%m-%d"),
                 "timing": timing,

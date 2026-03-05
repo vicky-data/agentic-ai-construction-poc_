@@ -33,7 +33,10 @@ for _, p in projects_df.iterrows():
     pname = p.get("project_name", "Project #" + str(p["id"]))
     proj_options.append(pname + " (#" + str(p["id"]) + ")")
 sel_proj = st.selectbox("🏗️ Select Project", options=proj_options)
-sel_proj_id = projects_df.iloc[0]["id"] if not projects_df.empty else 1
+if sel_proj:
+    sel_proj_id = int(sel_proj.split("(#")[1].replace(")", ""))
+else:
+    sel_proj_id = projects_df.iloc[0]["id"] if not projects_df.empty else 1
 
 tab_boq, tab_mrs_create, tab_mrs_status, tab_material_compare = st.tabs([
     "📋 BOQ View & Upload", "📝 Create MRS", "📊 MRS Status", "📈 Material vs BOQ"
